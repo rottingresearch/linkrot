@@ -1,0 +1,2 @@
+[console_scripts]
+linkrot = linkrot.cli:main
