@@ -86,7 +86,7 @@ def check_refs(refs, verbose=True, max_threads=MAX_THREADS_DEFAULT):
     print("\nSummary of link checker:")
     if "200" in codes:
         total_summary += "\n" + "%s working" % str(len(codes["200"]))
-        colorprint("%s working" % len(codes["200"]))
+        colorprint(OKGREEN, "%s working" % len(codes["200"]))
     for c in sorted(codes):
         if c != "200":
             total_summary += "\n" + str(FAIL) + "%s broken (reason: %s)" % (str(len(codes[c])), c)
