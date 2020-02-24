@@ -123,17 +123,17 @@ def download_urls(urls, output_directory, verbose=True,
                 status_code = response.getcode()
                 if status_code == 200:
                     f.write(urlopen(request).read())
-                    colorprint("Downloaded '%s' to '%s'" %
+                    colorprint(OKGREEN, "Downloaded '%s' to '%s'" %
                                         (url, fn_download))
                 else:
-                    colorprint("Error downloading '%s' (%s)" %
+                    colorprint(FAIL, "Error downloading '%s' (%s)" %
                                      (url, status_code))
         except HTTPError as e:
-            colorprint("Error downloading '%s' (%s)" % (url, e.code))
+            colorprint(FAIL, "Error downloading '%s' (%s)" % (url, e.code))
         except URLError as e:
-            colorprint("Error downloading '%s' (%s)" % (url, e.reason))
+            colorprint(FAIL, "Error downloading '%s' (%s)" % (url, e.reason))
         except Exception as e:
-            colorprint("Error downloading '%s' (%s)" % (url, str(e)))
+            colorprint(FAIL, "Error downloading '%s' (%s)" % (url, str(e)))
 
     # Create directory
     if not os.path.exists(output_directory):
