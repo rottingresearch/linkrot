@@ -82,7 +82,7 @@ def check_refs(refs, verbose=True, max_threads=MAX_THREADS_DEFAULT):
         pass
 
     # Print summary
-    total_summary = "\nSummary of link checker:"
+    total_summary = "\n\nSummary of link checker:"
     print("\nSummary of link checker:")
     if "200" in codes:
         total_summary += "\n" + str(OKGREEN) + "%s working" % str(len(codes["200"]))
