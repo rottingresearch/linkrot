@@ -98,7 +98,7 @@ $ linkrot https://weakdh.org/imperfect-forward-secrecy.pdf -d /tmp/
 To extract text, you can use the -t flag:
 
 # Extract text to console
-$ pdfx https://weakdh.org/imperfect-forward-secrecy.pdf -t
+$ linkrot https://weakdh.org/imperfect-forward-secrecy.pdf -t
 
 # Extract text to file
 $ linkrot https://weakdh.org/imperfect-forward-secrecy.pdf -t -o pdf-text.txt
