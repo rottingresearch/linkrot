@@ -2,11 +2,8 @@
 """
     xmp.py
     ~~~~~~
-
     Parses XMP metadata from PDF files.
-
     By Matt Swain. Released under the MIT license.
-
     http://blog.matt-swain.com/post/25650072381/a-lightweight-xmp-parser-for-extracting-pdf
 """
 
@@ -32,9 +29,7 @@ NS_MAP = {
 class XmpParser(object):
     """
     Parses an XMP string into a dictionary.
-
     Usage:
-
         parser = XmpParser(xmpstring)
         meta = parser.meta
     """
@@ -48,7 +43,7 @@ class XmpParser(object):
         """ A dictionary of all the parsed metadata. """
         meta = defaultdict(dict)
         for desc in self.rdftree.findall(RDF_NS+'Description'):
-            for el in desc.getchildren():
+            for el in desc.iter():		# getchildren() is deprecated since python 2.7 and 3.2, fixed it
                 ns, tag = self._parse_tag(el)
                 value = self._parse_value(el)
                 meta[ns][tag] = value
