@@ -5,10 +5,10 @@ name: OSSAR
 
 on:
   push:
-    branches: [ linkrot ]
+    branches: [ main ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ linkrot ]
+    branches: [ main ]
   schedule:
     - cron: '26 2 * * 2'
 
