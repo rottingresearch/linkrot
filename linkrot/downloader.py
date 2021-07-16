@@ -3,6 +3,11 @@ from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 import os
 import sys
+import ssl
+from collections import defaultdict
+from .threadpool import ThreadPool
+from .colorprint import colorprint, OKGREEN, FAIL
+
 IS_PY2 = sys.version_info < (3, 0)
 
 if IS_PY2:
@@ -13,11 +18,6 @@ else:
     from urllib.request import Request, urlopen, HTTPError, URLError
     unicode = str
 
-import ssl
-
-from collections import defaultdict
-from .threadpool import ThreadPool
-from .colorprint import colorprint, OKGREEN, FAIL
 
 MAX_THREADS_DEFAULT = 7
 
@@ -32,8 +32,8 @@ else:
 def sanitize_url(url):
     """ Make sure this url works with urllib2 (ascii, http, etc) """
     if url and not url.startswith("http"):
-        url = u"http://%s" % url
-    url = url.encode('ascii', 'ignore').decode("utf-8")
+        url = "http://%s" % url
+    url = url.encode("ascii", "ignore").decode("utf-8")
     return url
 
 
@@ -43,7 +43,7 @@ def get_status_code(url):
         request = Request(sanitize_url(url))
         request.add_header("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; "
                            "Windows NT 6.1; Trident/5.0)")
-        request.get_method = lambda: 'HEAD'
+        request.get_method = lambda: "HEAD"
         response = urlopen(request, context=ssl_unverified_context)
         # print response.info()
         return response.getcode()
@@ -89,10 +89,11 @@ def check_refs(refs, verbose=True, max_threads=MAX_THREADS_DEFAULT):
         colorprint(OKGREEN, "%s working" % len(codes["200"]))
     for c in sorted(codes):
         if c != "200":
-            total_summary += "\n" + "%s broken (reason: %s)" % (str(len(codes[c])), c)
+            total_summary += "\n" + "%s broken (reason: %s)" (str(len(
+                codes[c])), c)
             colorprint(FAIL, "%s broken (reason: %s)" % (len(codes[c]), c))
             for ref in codes[c]:
-                o = u"  - %s" % ref.ref
+                o = "  - %s" % ref.ref
                 if ref.page > 0:
                     o += " (page %s)" % ref.page
                 total_summary += "\n" + str(o)

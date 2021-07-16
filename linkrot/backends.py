@@ -8,10 +8,10 @@ from __future__ import (absolute_import, division, print_function,
 
 import sys
 import logging
-from io import BytesIO
-
-# Character Detection Helper
 import chardet
+
+from io import BytesIO
+from re import compile
 
 # Find URLs in text via regex
 from . import extractor
@@ -20,7 +20,6 @@ from .libs.xmp import xmp_to_dict
 # Setting `psparser.STRICT` is the first thing to do because it is
 # referenced in the other pdfparser modules
 from pdfminer import settings as pdfminer_settings
-pdfminer_settings.STRICT = False
 from pdfminer import psparser
 from pdfminer.pdfdocument import PDFDocument
 from pdfminer.pdfparser import PDFParser
@@ -30,6 +29,8 @@ from pdfminer.pdftypes import resolve1, PDFObjRef
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 
+# Moved from under psparser
+pdfminer_settings.STRICT = False
 
 logger = logging.getLogger(__name__)
 
@@ -61,12 +62,12 @@ def make_compat_str(in_str):
     enc = chardet.detect(in_str)
 
     # Decode the object into a unicode object
-    out_str = in_str.decode(enc['encoding'])
+    out_str = in_str.decode(enc["encoding"])
 
     # Cleanup
-    if enc['encoding'] == "UTF-16BE":
+    if enc["encoding"] == "UTF-16BE":
         # Remove byte order marks (BOM)
-        if out_str.startswith('\ufeff'):
+        if out_str.startswith("\ufeff"):
             out_str = out_str[1:]
     return out_str
 
@@ -82,10 +83,9 @@ class Reference(object):
         self.ref = uri
         self.reftype = "url"
         self.page = page
-        if self.ref.lower().__contains__("mailto:"):
-            self.ref = self.ref.replace('mailto:', "").strip()
+        self.pdf_regex = compile(r"\.pdf(:?\?.*)?$")
         # Detect reftype by filetype
-        if uri.lower().endswith(".pdf"):
+        if self.pdf_regex.search(uri.lower()):
             self.reftype = "pdf"
             return
 
@@ -180,7 +180,7 @@ class ReaderBackend(object):
 
 
 class PDFMinerBackend(ReaderBackend):
-    def __init__(self, pdf_stream, password='', pagenos=[], maxpages=0):
+    def __init__(self, pdf_stream, password="", pagenos=[], maxpages=0):
         ReaderBackend.__init__(self)
         self.pdf_stream = pdf_stream
 
@@ -197,8 +197,8 @@ class PDFMinerBackend(ReaderBackend):
                     self.metadata[k] = make_compat_str(v.name)
 
         # Secret Metadata
-        if 'Metadata' in doc.catalog:
-            metadata = resolve1(doc.catalog['Metadata']).get_data()
+        if "Metadata" in doc.catalog:
+            metadata = resolve1(doc.catalog["Metadata"]).get_data()
             # print(metadata)  # The raw XMP metadata
             # print(xmp_to_dict(metadata))
             self.metadata.update(xmp_to_dict(metadata))
@@ -213,9 +213,14 @@ class PDFMinerBackend(ReaderBackend):
 
         self.metadata["Pages"] = 0
         self.curpage = 0
-        for page in PDFPage.get_pages(self.pdf_stream, pagenos=pagenos,
-                                      maxpages=maxpages, password=password,
-                                      caching=True, check_extractable=False):
+        for page in PDFPage.get_pages(
+            self.pdf_stream,
+            pagenos=pagenos,
+            maxpages=maxpages,
+            password=password,
+            caching=True,
+            check_extractable=False,
+        ):
             # Read page contents
             interpreter.process_page(page)
             self.metadata["Pages"] += 1
@@ -234,7 +239,7 @@ class PDFMinerBackend(ReaderBackend):
                         self.references.add(refs)
 
             # except Exception as e:
-                # logger.warning(str(e))
+            # logger.warning(str(e))
 
         # Remove empty metadata entries
         self.metadata_cleanup()
@@ -286,6 +291,9 @@ class PDFMinerBackend(ReaderBackend):
         if "URI" in obj_resolved:
             if isinstance(obj_resolved["URI"], PDFObjRef):
                 return self.resolve_PDFObjRef(obj_resolved["URI"])
+            else:
+                return Reference(obj_resolved["URI"].decode("utf-8"),
+                                 self.curpage)
 
         if "A" in obj_resolved:
             if isinstance(obj_resolved["A"], PDFObjRef):

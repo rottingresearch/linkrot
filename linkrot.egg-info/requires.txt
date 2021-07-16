@@ -1,8 +1,0 @@
-pdfminer2
-chardet
-
-[dev]
-check-manifest
-
-[test]
-tox

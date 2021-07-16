@@ -3,6 +3,8 @@ Inspired by http://stackoverflow.com/a/7257510
 """
 
 import sys
+from threading import Thread
+
 IS_PY2 = sys.version_info < (3, 0)
 
 if IS_PY2:
@@ -11,8 +13,6 @@ if IS_PY2:
 else:
     # Python 3
     from queue import Queue
-
-from threading import Thread
 
 
 class Worker(Thread):
