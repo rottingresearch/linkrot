@@ -271,7 +271,7 @@ class PDFMinerBackend(ReaderBackend):
         # print(">", obj_ref, type(obj_ref))
         if not isinstance(obj_ref, PDFObjRef):
             # print("type not of PDFObjRef")
-            return None
+            return "None"
 
         obj_resolved = obj_ref.resolve()
         # print("obj_resolved:", obj_resolved, type(obj_resolved))
