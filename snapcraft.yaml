@@ -5,13 +5,6 @@ description: |
   This script searches a pdf for hyperlinks and tests them for active status or errors returned.
 base: core18
 confinement: devmode
-
-
-parts:
-  linkrot:
-    plugin: python
-    python-version: python3
- 
 apps:
   linkrot:
     command: bin/linkrot
