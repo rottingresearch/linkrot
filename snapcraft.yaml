@@ -1,10 +1,10 @@
 name: linkrot
-version: '0.982'
+version: '0.983'
 summary: linkrot
 description: |
   This script searches a pdf for hyperlinks and tests them for active status or errors returned.
 base: core18
 confinement: devmode
-apps:
+parts:
   linkrot:
-    command: bin/linkrot
+    plugin: python
