@@ -10,4 +10,9 @@ confinement: classic
 parts:
   linkrot:
     plugin: python
-
+    python-version: python3
+    source: .
+ 
+apps:
+  linkrot:
+    command: bin/linkrot
