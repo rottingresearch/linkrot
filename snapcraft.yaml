@@ -3,7 +3,7 @@ version: '0.983'
 summary: linkrot
 description: |
   This script searches a pdf for hyperlinks and tests them for active status or errors returned.
-base: core18
+base: core20
 confinement: devmode
 parts:
   linkrot:
