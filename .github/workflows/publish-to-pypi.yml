@@ -1,8 +1,39 @@
-[pypi]
-steps:
-  - name: Publish to PyPi
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
-    uses: pypa/gh-action-pypi-publish@release/v1
-    with:
-      user: marshalmiller
-      password: ${{ secrets.PyPi }}
+Publish in PyPi
+---------------------------
+Install two package of PyPi 
+> pip install twine - this will allow us to connect to PyPI and publish our package.
+> pip install docopt - this package will parse the arguments we passed in the command-line.
+
+Create setup.py in current root, here the example code
+-------------------------------------------------------------------
+import setuptools
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="Calculator",
+    version="0.0.1",
+    author="Your Name",
+    author_email="Your Email",
+    description="Description regarding the package",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="Project_url",
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+)
+-------------------------------------------------------------------
+
+Then Run Those Command 
+>python setup.py sdist
+username: marshalmiller
+password: ${{ secrets.PyPi }}
+
+>twine upload dist/*
+
+==== Done, Your Packages has been published ====
