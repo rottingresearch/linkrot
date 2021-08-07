@@ -4,4 +4,4 @@
   uses: pypa/gh-action-pypi-publish@release/v1
   with:
     user: marshalmiller
-    password: pypi-AgEIcHlwaS5vcmcCJGIwOWYyMGY0LTI4ZGQtNDEwOC1hYjE3LWU2ZWI3MDgwOWU5NAACJXsicGVybWlzc2lvbnMiOiAidXNlciIsICJ2ZXJzaW9uIjogMX0AAAYgiBvD_UI-uI6fiDf5Sft9sNaU_Ri85290niF7989thCI
+    password: ${{ secrets.PyPi }}
