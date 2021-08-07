@@ -9,14 +9,14 @@ Create setup.py in current root, here the example code
 import setuptools
 
 setuptools.setup(
-    name="Calculator",
+    name="linkrot",
     version="0.0.1",
-    author="Your Name",
-    author_email="Your Email",
+    author="Marshal A. Miller",
+    author_email="marshal@marshalmiller.com",
     description="Description regarding the package",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="Project_url",
+    url="rottingresearch.org",
     packages=setuptools.find_packages(),
     ],
 )
@@ -25,7 +25,7 @@ setuptools.setup(
 Then Run Those Command 
 >python setup.py sdist
 username: marshalmiller
-password: ${{ secrets.PyPi }}
+password: ${{ secrets.PYPI }}
 
 >twine upload dist/*
 
