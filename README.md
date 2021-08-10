@@ -1,3 +1,5 @@
+[![linkrot](https://snapcraft.io/linkrot/badge.svg)](https://snapcraft.io/linkrot)[![linkrot](https://snapcraft.io/linkrot/trending.svg?name=0)](https://snapcraft.io/linkrot)
+
 Introduction
 
 Extract references (pdf, url, doi, arxiv) and metadata from a PDF. Optionally download all referenced PDFs and check for broken links.
@@ -16,6 +18,7 @@ Compatible with Python 2 and 3
 Works with local and online pdfs
 
 Getting Started
+
 Grab a copy of the code with easy_install or pip, and run it:
 
 pip install -e git+https://github.com/marshalmiller/linkrot.git#egg=linkrot
