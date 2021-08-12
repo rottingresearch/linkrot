@@ -14,12 +14,13 @@ Output as text or JSON (using the -j flag)
 Extract the PDF text (using the --text flag)
 
 Use as command-line tool or Python package
-Compatible with Python 2 and 3
 Works with local and online pdfs
 
 Getting Started
 
-Grab a copy of the code with easy_install or pip, and run it:
+Grab a copy of the code with snap or pip, and run it:
+
+snap install linkrot
 
 pip install -e git+https://github.com/marshalmiller/linkrot.git#egg=linkrot
 ...
