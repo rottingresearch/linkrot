@@ -1,11 +1,11 @@
 [![linkrot](https://snapcraft.io/linkrot/badge.svg)](https://snapcraft.io/linkrot)[![linkrot](https://snapcraft.io/linkrot/trending.svg?name=0)](https://snapcraft.io/linkrot)
 
-#Introduction
+# Introduction
 
 Extract references (pdf, url, doi, arxiv) and metadata from a PDF. Optionally download all referenced PDFs and check for broken links.
 
 
-#Features
+# Features
 
 Extract references and metadata from a given PDF.
 Detects pdf, url, arxiv and doi references.
@@ -16,13 +16,15 @@ Extract the PDF text (using the --text flag)
 Use as command-line tool or Python package
 Works with local and online pdfs
 
-#Installation
+# Installation
 
 Grab a copy of the code with snap or pip, and run it:
 
 snap install linkrot
 
 pip install linkrot
+
+# Usage
 
 $ linkrot <pdf-file-or-url>
 Run linkrot -h to see the help output:
@@ -34,6 +36,8 @@ usage: linkrot [-h] [-d OUTPUT_DIRECTORY] [-c] [-j] [-v] [-t] [-o OUTPUT_FILE]
 
 Extract metadata and references from a PDF, and optionally download all
 referenced PDFs.
+
+# Arguments
 
 positional arguments:
   pdf                   Filename or URL of a PDF file
@@ -49,7 +53,9 @@ optional arguments:
   -o OUTPUT_FILE, --output-file OUTPUT_FILE
                         Output to specified file instead of console
   --version             show program's version number and exit
-Examples
+
+# Examples
+            
 Lets take a look at this paper: https://weakdh.org/imperfect-forward-secrecy.pdf:
 
 https://weakdh.org/imperfect-forward-secrecy.pdf
