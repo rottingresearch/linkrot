@@ -22,8 +22,7 @@ Grab a copy of the code with snap or pip, and run it:
 
 snap install linkrot
 
-pip install -e git+https://github.com/marshalmiller/linkrot.git#egg=linkrot
-...
+pip install linkrot
 
 $ linkrot <pdf-file-or-url>
 Run linkrot -h to see the help output:
