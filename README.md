@@ -16,7 +16,7 @@ Extract the PDF text (using the --text flag)
 Use as command-line tool or Python package
 Works with local and online pdfs
 
-Getting Started
+Installation
 
 Grab a copy of the code with snap or pip, and run it:
 
