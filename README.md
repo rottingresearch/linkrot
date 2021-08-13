@@ -1,11 +1,11 @@
 [![linkrot](https://snapcraft.io/linkrot/badge.svg)](https://snapcraft.io/linkrot)[![linkrot](https://snapcraft.io/linkrot/trending.svg?name=0)](https://snapcraft.io/linkrot)
 
-Introduction
+#Introduction
 
 Extract references (pdf, url, doi, arxiv) and metadata from a PDF. Optionally download all referenced PDFs and check for broken links.
 
 
-Features
+#Features
 
 Extract references and metadata from a given PDF.
 Detects pdf, url, arxiv and doi references.
@@ -16,7 +16,7 @@ Extract the PDF text (using the --text flag)
 Use as command-line tool or Python package
 Works with local and online pdfs
 
-Installation
+#Installation
 
 Grab a copy of the code with snap or pip, and run it:
 
