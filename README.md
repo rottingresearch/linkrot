@@ -18,9 +18,9 @@ Scans pdfs for links written in plaintext and checks if they are active or retur
 
 Grab a copy of the code with snap or pip, and run it:
 
-snap install linkrot
-[![linkrot](https://snapcraft.io/linkrot/badge.svg)](https://snapcraft.io/linkrot)[![linkrot](https://snapcraft.io/linkrot/trending.svg?name=0)](https://snapcraft.io/linkrot)
-pip install linkrot
+snap install linkrot  
+[![linkrot](https://snapcraft.io/linkrot/badge.svg)](https://snapcraft.io/linkrot)[![linkrot](https://snapcraft.io/linkrot/trending.svg?name=0)](https://snapcraft.io/linkrot)  
+pip install linkrot  
 
 # Usage
 
