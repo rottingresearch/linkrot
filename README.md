@@ -1,5 +1,3 @@
-[![linkrot](https://snapcraft.io/linkrot/badge.svg)](https://snapcraft.io/linkrot)[![linkrot](https://snapcraft.io/linkrot/trending.svg?name=0)](https://snapcraft.io/linkrot)
-
 # Introduction
 
 Scans pdfs for links written in plaintext and checks if they are active or returns an error code. It then generates a report of its findings. Extract references (pdf, url, doi, arxiv) and metadata from a PDF.
@@ -7,21 +5,21 @@ Scans pdfs for links written in plaintext and checks if they are active or retur
 
 # Features
 
-Extract references and metadata from a given PDF.  
-Detects pdf, url, arxiv and doi references.  
-Checks for valid SSL certificate.  
-Find broken hyperlinks (using the -c flag).  
-Output as text or JSON (using the -j flag).  
-Extract the PDF text (using the --text flag).  
-Use as command-line tool or Python package.  
-Works with local and online pdfs.  
+- Extract references and metadata from a given PDF.  
+- Detects pdf, url, arxiv and doi references.  
+- Checks for valid SSL certificate.  
+- Find broken hyperlinks (using the -c flag).  
+- Output as text or JSON (using the -j flag).  
+- Extract the PDF text (using the --text flag).  
+- Use as command-line tool or Python package.  
+- Works with local and online pdfs.  
 
 # Installation
 
 Grab a copy of the code with snap or pip, and run it:
 
 snap install linkrot
-
+[![linkrot](https://snapcraft.io/linkrot/badge.svg)](https://snapcraft.io/linkrot)[![linkrot](https://snapcraft.io/linkrot/trending.svg?name=0)](https://snapcraft.io/linkrot)
 pip install linkrot
 
 # Usage
