@@ -7,14 +7,14 @@ Extract references (pdf, url, doi, arxiv) and metadata from a PDF. Optionally do
 
 # Features
 
-Extract references and metadata from a given PDF.
-Detects pdf, url, arxiv and doi references.
-Find broken hyperlinks (using the -c flag)
-Output as text or JSON (using the -j flag)
-Extract the PDF text (using the --text flag)
-
-Use as command-line tool or Python package
-Works with local and online pdfs
+Extract references and metadata from a given PDF.  
+Detects pdf, url, arxiv and doi references.  
+Checks for valid SSL certificate.  
+Find broken hyperlinks (using the -c flag).  
+Output as text or JSON (using the -j flag).  
+Extract the PDF text (using the --text flag).  
+Use as command-line tool or Python package.  
+Works with local and online pdfs.  
 
 # Installation
 
@@ -53,71 +53,12 @@ referenced PDFs.
     --version             (Show program's version number and exit)  
 
 # Examples
-            
-Lets take a look at this paper: https://weakdh.org/imperfect-forward-secrecy.pdf:
 
-https://weakdh.org/imperfect-forward-secrecy.pdf
-Document infos:
-- CreationDate = D:20150821110623-04'00'
-- Creator = LaTeX with hyperref package
-- ModDate = D:20150821110805-04'00'
-- PTEX.Fullbanner = This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) kpathsea version 6.1.1
-- Pages = 13
-- Producer = pdfTeX-1.40.14
-- Title = Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice
-- Trapped = False
-- dc = {'title': {'x-default': 'Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice'}, 'creator': [None], 'description': {'x-default': None}, 'format': 'application/pdf'}
-- pdf = {'Keywords': None, 'Producer': 'pdfTeX-1.40.14', 'Trapped': 'False'}
-- linkrot = {'PTEX.Fullbanner': 'This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) kpathsea version 6.1.1'}
-- xap = {'CreateDate': '2015-08-21T11:06:23-04:00', 'ModifyDate': '2015-08-21T11:08:05-04:00', 'CreatorTool': 'LaTeX with hyperref package', 'MetadataDate': '2015-08-21T11:08:05-04:00'}
-- xapmm = {'InstanceID': 'uuid:4e570f88-cd0f-4488-85ad-03f4435a4048', 'DocumentID': 'uuid:98988d37-b43d-4c1a-965b-988dfb2944b6'}
+## Extract text to console
+$ linkrot https://example.com/example.pdf -t
 
-References: 36
-- URL: 18
-- PDF: 18
+## Extract text to file
+$ linkrot https://example.com/example.pdf -t -o pdf-text.txt
 
-PDF References:
-- http://www.spiegel.de/media/media-35533.pdf
-- http://www.spiegel.de/media/media-35513.pdf
-- http://www.spiegel.de/media/media-35509.pdf
-- http://www.spiegel.de/media/media-35529.pdf
-- http://www.spiegel.de/media/media-35527.pdf
-- http://cr.yp.to/factorization/smoothparts-20040510.pdf
-- http://www.spiegel.de/media/media-35517.pdf
-- http://www.spiegel.de/media/media-35526.pdf
-- http://www.spiegel.de/media/media-35519.pdf
-- http://www.spiegel.de/media/media-35522.pdf
-- http://cryptome.org/2013/08/spy-budget-fy13.pdf
-- http://www.spiegel.de/media/media-35515.pdf
-- http://www.spiegel.de/media/media-35514.pdf
-- http://www.hyperelliptic.org/tanja/SHARCS/talks06/thorsten.pdf
-- http://www.spiegel.de/media/media-35528.pdf
-- http://www.spiegel.de/media/media-35671.pdf
-- http://www.spiegel.de/media/media-35520.pdf
-- http://www.spiegel.de/media/media-35551.pdf
-
-You can use the -v flag to output all references instead of just the PDFs.
-
-Download all referenced pdfs with -d (for download-pdfs) to the specified directory (eg. to /tmp/):
-
-$ linkrot https://weakdh.org/imperfect-forward-secrecy.pdf -d /tmp/
-...
-To extract text, you can use the -t flag:
-
-# Extract text to console
-$ linkrot https://weakdh.org/imperfect-forward-secrecy.pdf -t
-
-# Extract text to file
-$ linkrot https://weakdh.org/imperfect-forward-secrecy.pdf -t -o pdf-text.txt
-To check for broken links use the -c flag:
-
-#Check Links
-$ linkrot https://weakdh.org/imperfect-forward-secrecy.pdf -c
-
-Usage as Python library
->>> import linkrot
->>> pdf = linkrot.linkrot("filename-or-url.pdf")
->>> metadata = pdf.get_metadata()
->>> references_list = pdf.get_references()
->>> references_dict = pdf.get_references_as_dict()
->>> pdf.download_pdfs("target-directory")
+## Check Links
+$ linkrot https://example.com/example.pdf -c
