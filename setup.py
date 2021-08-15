@@ -19,10 +19,6 @@ def parse_requirements(filename):
 here = path.abspath(path.dirname(__file__))
 reqs = parse_requirements(path.join(here, "requirements.txt"))
 
-# Get the long description from the README file
-with open(path.join(here, "README.md"), encoding="utf-8") as f:
-    long_description = f.read()
-
 setup(
     name='linkrot',
 
@@ -33,7 +29,7 @@ setup(
 
     description='Extract metadata and URLs from PDF files'
         ', and check URL status.',
-    long_description=long_description,
+    long_description='This is the long description.',
 
     # The project's main homepage.
     url='https://github.com/marshalmiller/linkrot',
