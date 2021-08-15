@@ -44,12 +44,12 @@ referenced PDFs.
 
 ## optional arguments:
     -h, --help            (Show this help message and exit)  
-    -d OUTPUT_DIRECTORY, --download-pdfs OUTPUT_DIRECTORY       (Download all referenced PDFs into specified directory)  
+    -d OUTPUT_DIRECTORY, --download-pdfs OUTPUT_DIRECTORY (Download all referenced PDFs into specified directory)  
     -c, --check-links     (Check for broken links)  
     -j, --json            (Output infos as JSON (instead of plain text))  
     -v, --verbose         (Print all references (instead of only PDFs))  
     -t, --text            (Only extract text (no metadata or references))  
-    -o OUTPUT_FILE, --output-file OUTPUT_FILE       (Output to specified file instead of console)  
+    -o OUTPUT_FILE, --output-file OUTPUT_FILE (Output to specified file instead of console)  
     --version             (Show program's version number and exit)  
 
 # Examples
