@@ -60,3 +60,6 @@ $ linkrot https://example.com/example.pdf -t -o pdf-text.txt
 
 ## Check Links
 $ linkrot https://example.com/example.pdf -c
+            
+# License
+This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
