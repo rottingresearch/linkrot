@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build-n-publish:
-    name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
+    name: linkrot
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@master
@@ -27,8 +27,7 @@ jobs:
         --wheel
         --outdir dist/
         .
-    - name: Publish distribution 📦 to PyPI
+    - name: linkrot
       uses: pypa/gh-action-pypi-publish@master
       with:
-        username = __token__
-        password = pypi-AgEIcHlwaS5vcmcCJDdmNjY0ZWY1LTEyNWUtNGRlMS1hOTMwLWU4MjIyMDhkZjYxOAACJXsicGVybWlzc2lvbnMiOiAidXNlciIsICJ2ZXJzaW9uIjogMX0AAAYgIfLkWb9Yu4xab5oyFoX9GjcFw9mWwYryVkdnWkE7KF0
+        password: ${{ secrets.PYPI }}
