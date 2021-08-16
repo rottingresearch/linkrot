@@ -27,7 +27,7 @@ jobs:
         --wheel
         --outdir dist/
         .
-    - name: linkrot
+    - name: Publish to PyPi
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         user: __token__
