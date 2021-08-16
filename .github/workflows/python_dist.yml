@@ -28,6 +28,7 @@ jobs:
         --outdir dist/
         .
     - name: linkrot
-      uses: pypa/gh-action-pypi-publish@master
+      uses: pypa/gh-action-pypi-publish@release/v1
       with:
+        username: __token__
         password: ${{ secrets.PYPI }}
