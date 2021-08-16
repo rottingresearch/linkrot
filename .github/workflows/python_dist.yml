@@ -1,11 +1,14 @@
 name: PyPi Dist
 
-on: push
+on:
+  release:
+    types: [published]
+
 
 jobs:
   build-n-publish:
     name: linkrot
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Set up Python 3.7
