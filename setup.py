@@ -51,13 +51,6 @@ setup(
 
         'Environment :: Console',
 
-        # Indicate who your project is intended for
-        'Intended Audience :: Libraries',
-        'Intended Audience :: Education',
-        'Intended Audience :: End Users/Desktop',
-        'Intended Audience :: Information Science',
-        'Intended Audience :: Science/Research',
-
         # Pick your license as you wish (should match "license" above)
         'License :: OSI Approved :: Apache Software License',
 
