@@ -30,4 +30,5 @@ jobs:
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@master
       with:
-        password: ${{ secrets.PYPI }}
+        username = __token__
+        password = pypi-AgEIcHlwaS5vcmcCJDdmNjY0ZWY1LTEyNWUtNGRlMS1hOTMwLWU4MjIyMDhkZjYxOAACJXsicGVybWlzc2lvbnMiOiAidXNlciIsICJ2ZXJzaW9uIjogMX0AAAYgIfLkWb9Yu4xab5oyFoX9GjcFw9mWwYryVkdnWkE7KF0
