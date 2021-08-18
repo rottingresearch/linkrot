@@ -23,7 +23,7 @@ pip install linkrot
 
 # Usage
 
-$ linkrot (pdf-file-or-url)  
+$ linkrot [pdf-file-or-url]  
 Run linkrot -h to see the help output:
 
 $ linkrot -h  
