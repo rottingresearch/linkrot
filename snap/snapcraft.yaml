@@ -1,5 +1,5 @@
 name: linkrot
-version: '0.984'
+version: '1.0'
 summary: linkrot
 description: |
   This script searches a pdf for hyperlinks and tests them for active status or errors returned.
