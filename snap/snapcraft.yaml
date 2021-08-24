@@ -11,4 +11,4 @@ parts:
     source: .
 apps:
   linkrot:
-    command: bin/linkrot
+    command: local/bin/linkrot
