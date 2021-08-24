@@ -8,7 +8,3 @@ base: core20
 parts:
   linkrot:
     plugin: python
-    source: .
-apps:
-  linkrot:
-    command: local/bin/linkrot
