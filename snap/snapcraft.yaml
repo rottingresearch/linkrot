@@ -4,7 +4,6 @@ summary: linkrot
 description: |
   This script searches a pdf for hyperlinks and tests them for active status or errors returned.
 base: core20
-confinement: strict
 
 parts:
   linkrot:
