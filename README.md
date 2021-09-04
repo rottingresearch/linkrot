@@ -1,4 +1,3 @@
-# This is a Previous Version Going Through Upgrade
 # Introduction
 
 Scans pdfs for links written in plaintext and checks if they are active or returns an error code. It then generates a report of its findings. Extract references (pdf, url, doi, arxiv) and metadata from a PDF.
