@@ -28,6 +28,7 @@ setup(
     description='Extract metadata and URLs from PDF files'
         ', and download all referenced PDFs',
     long_description=long_description,
+    long_description_content_type='text/markdown'
     # The project's main homepage.
     url='https://rottingresearch.com',
 
