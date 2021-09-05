@@ -19,6 +19,8 @@ Grab a copy of the code with pip, and run it:
  
 pip install linkrot  
 
+Snap COMING SOON
+
 # Usage
 
 $ linkrot [pdf-file-or-url]  
