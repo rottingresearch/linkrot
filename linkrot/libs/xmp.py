@@ -21,7 +21,7 @@ NS_MAP = {
     'http://ns.adobe.com/xap/1.0/': 'xap',
     'http://ns.adobe.com/pdf/1.3/': 'pdf',
     'http://ns.adobe.com/xap/1.0/mm/': 'xapmm',
-    'http://ns.adobe.com/pdfx/1.3/': 'pdfx',
+    'http://ns.adobe.com/linkrot/1.3/': 'linkrot',
     'http://prismstandard.org/namespaces/basic/2.0/': 'prism',
     'http://crossref.org/crossmark/1.0/': 'crossmark',
     'http://ns.adobe.com/xap/1.0/rights/': 'rights',

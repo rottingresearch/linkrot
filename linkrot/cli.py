@@ -12,8 +12,8 @@ import argparse
 import json
 import codecs
 
-import pdfx_new
-from pdfx_new.downloader import check_refs
+import linkrot
+from linkrot.downloader import check_refs
 
 
 IS_PY2 = sys.version_info < (3, 0)
@@ -42,7 +42,7 @@ def create_parser():
     parser = argparse.ArgumentParser(
         description="Extract metadata and references from a PDF, and "
         "optionally download all referenced PDFs. Visit "
-        "https://www.metachris.com/pdfx_new for more information.",
+        "https://www.metachris.com/linkrot for more information.",
         epilog="")
 
     parser.add_argument("pdf", help="Filename or URL of a PDF file")
@@ -84,12 +84,12 @@ def create_parser():
     parser.add_argument("--version",
                         action="version",
                         version="%(prog)s v{version}".format(
-                            version=pdfx_new.__version__))
+                            version=linkrot.__version__))
     return parser
 
 
 def get_text_output(pdf, args):
-    """ Normal output of infos of PDFx instance """
+    """ Normal output of infos of linkrot instance """
     # Metadata
     ret = ""
     ret += "Document infos:\n"
@@ -146,12 +146,12 @@ def main():
     #             format='%(levelname)s - %(module)s - %(message)s')
 
     try:
-        pdf = pdfx_new.PDFx(args.pdf)
-    except pdfx_new.exceptions.FileNotFoundError as e:
+        pdf = linkrot.linkrot(args.pdf)
+    except linkrot.exceptions.FileNotFoundError as e:
         exit_with_error(ERROR_FILE_NOT_FOUND, str(e))
-    except pdfx_new.exceptions.DownloadError as e:
+    except linkrot.exceptions.DownloadError as e:
         exit_with_error(ERROR_DOWNLOAD, str(e))
-    except pdfx_new.exceptions.PDFInvalidError as e:
+    except linkrot.exceptions.PDFInvalidError as e:
         exit_with_error(ERROR_PDF_INVALID, str(e))
 
     # Perhaps only output text
