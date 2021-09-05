@@ -30,8 +30,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown'
     # The project's main homepage.
-    url='https://rottingresearch.com',
-
+    url='https://www.rottingresearch.com',
     # Author details
     author='Marshal A. Miller',
     author_email='marshal@marshalmiller.com',
