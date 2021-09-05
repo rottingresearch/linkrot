@@ -59,3 +59,4 @@ $ linkrot https://example.com/example.pdf -t -o pdf-text.txt
 $ linkrot https://example.com/example.pdf -c
             
 # License
+This program is licensed with an MIT License.
