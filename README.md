@@ -24,9 +24,10 @@ Snap COMING SOON
 # Usage
 
 $ linkrot [pdf-file-or-url]  
-Run linkrot -h to see the help output:
 
+Run linkrot -h to see the help output:
 $ linkrot -h  
+
 usage: linkrot [-h] [-d OUTPUT_DIRECTORY] [-c] [-j] [-v] [-t] [-o OUTPUT_FILE]
             [--version]
             pdf
