@@ -1,3 +1,8 @@
 {
-    "python.pythonPath": "C:\\Users\\mmiller\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
+    "python.pythonPath": "C:\\Users\\mmiller\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
