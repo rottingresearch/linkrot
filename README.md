@@ -15,18 +15,18 @@ Scans pdfs for links written in plaintext and checks if they are active or retur
 
 # Installation
 
-Grab a copy of the code with pip, and run it:
+Grab a copy of the code with pip or snap:
  
-pip install linkrot  
+`pip install linkrot`  
 
-Snap COMING SOON
+`snap install linkrot`
 
 # Usage
 
-$ linkrot [pdf-file-or-url]  
+`linkrot [pdf-file-or-url]`  
 
 Run linkrot -h to see the help output:
-$ linkrot -h  
+`linkrot -h`  
 
 usage: linkrot [-h] [-d OUTPUT_DIRECTORY] [-c] [-j] [-v] [-t] [-o OUTPUT_FILE]
             [--version]
@@ -53,13 +53,13 @@ referenced PDFs.
 # Examples
 
 ## Extract text to console
-$ linkrot https://example.com/example.pdf -t
+`linkrot https://example.com/example.pdf -t`
 
 ## Extract text to file
-$ linkrot https://example.com/example.pdf -t -o pdf-text.txt
+`linkrot https://example.com/example.pdf -t -o pdf-text.txt`
 
 ## Check Links
-$ linkrot https://example.com/example.pdf -c
+`linkrot https://example.com/example.pdf -c`
             
 # License
 This program is licensed with an [MIT License](https://github.com/marshalmiller/linkrot/blob/main/LICENSE).
