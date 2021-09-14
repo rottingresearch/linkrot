@@ -1,0 +1,9 @@
+- name: Automatically Assign Action
+  # You may pin to the exact commit or the version.
+  # uses: titenkov/auto-assign-action@19b1f4e4f423af5e58dfe4e9c21be704c9bcec97
+  uses: titenkov/auto-assign-action@v1.2.1
+  with:
+    # A token for the repo
+    repo-token: # optional, default is ${{ github.token }}
+    # A path for the auto-assign configuration
+    configuration-path: # optional, default is .github/auto_assign.yml
