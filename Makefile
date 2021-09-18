@@ -3,7 +3,7 @@
 
 deps:  ## Install dependencies
 	pip install -e .
-	pip install -r requirements.txt
+	pip install -r requirements_dev.txt
 
 format:  ## Code formatting
 	black linkrot
