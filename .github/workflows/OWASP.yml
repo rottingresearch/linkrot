@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 jobs:
   steps:
-    - name: OWASP ZAP Baseline Scan
+    - name: ZAP Scan
       uses: zaproxy/action-baseline@v0.5.0
-    - name: OWASP ZAP Full Scan
+    - name: Full Scan
      uses: zaproxy/action-full-scan@v0.3.0
