@@ -6,7 +6,6 @@ import pytest
 
 curdir = os.path.dirname(os.path.realpath(__file__))
 
-
 def test_all():
     with pytest.raises(linkrot.exceptions.FileNotFoundError):
         linkrot.linkrot("asd")
@@ -24,7 +23,6 @@ def test_all():
 
 
 def test_two_pdfs():
-    # See https://github.com/metachris/linkrot/issues/14
     linkrot.linkrot(os.path.join(curdir, "pdfs/i14doc1.pdf"))
     pdf_2 = linkrot.linkrot(os.path.join(curdir, "pdfs/i14doc2.pdf"))
     assert len(pdf_2.get_references()) == 2
