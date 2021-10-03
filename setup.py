@@ -25,12 +25,9 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version="1.11",
+    version="2.0",
 
-    description='Extract metadata and URLs from PDF files'
-        ', and check URL status.',
-    long_description='This is the long description.',
-
+    description='Extract metadata and URLs from PDF files',
     # The project's main homepage.
     url='https://github.com/marshalmiller/linkrot',
 

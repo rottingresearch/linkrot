@@ -4,8 +4,7 @@
 Command line tool to get metadata and URLs from a local or remote PDF,
 and optionally download all referenced PDFs.
 """
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import sys
 import argparse
@@ -19,7 +18,7 @@ from linkrot.downloader import check_refs
 IS_PY2 = sys.version_info < (3, 0)
 if IS_PY2:
     # Python 2
-    parse_str = unicode
+    parse_str = unicode  # noqa: F821
 else:
     # Python 3
     parse_str = str
@@ -32,6 +31,7 @@ def exit_with_error(code, *objs):
     print("ERROR %s:" % code, *objs, file=sys.stderr)
     exit(code)
 
+
 # Error Status Codes
 ERROR_FILE_NOT_FOUND = 1
 ERROR_DOWNLOAD = 2
@@ -42,8 +42,9 @@ def create_parser():
     parser = argparse.ArgumentParser(
         description="Extract metadata and references from a PDF, and "
         "optionally download all referenced PDFs. Visit "
-        "https://www.metachris.com/linkrot for more information.",
-        epilog="")
+        "https://github.com/marshalmiller/linkrot for more information.",
+        epilog="",
+    )
 
     parser.add_argument("pdf", help="Filename or URL of a PDF file")
 
@@ -51,40 +52,48 @@ def create_parser():
         "-d",
         "--download-pdfs",
         metavar="OUTPUT_DIRECTORY",
-        help="Download all referenced PDFs into specified directory")
+        help="Download all referenced PDFs into specified directory",
+    )
 
     parser.add_argument(
-        "-c",
-        "--check-links",
-        action='store_true',
-        help="Check for broken links")
+        "-c", "--check-links", action="store_true", help="Check for broken links"
+    )
 
-    parser.add_argument("-j",
-                        "--json",
-                        action='store_true',
-                        help="Output infos as JSON (instead of plain text)")
+    parser.add_argument(
+        "-j",
+        "--json",
+        action="store_true",
+        help="Output infos as JSON (instead of plain text)",
+    )
 
-    parser.add_argument("-v",
-                        "--verbose",
-                        action="count",
-                        default=0,
-                        help="Print all references (instead of only PDFs)")
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="count",
+        default=0,
+        help="Print all references (instead of only PDFs)",
+    )
 
     # parser.add_argument("--debug",
     #                     action='store_true',
     #                     help="Output debug infos")
 
-    parser.add_argument("-t", "--text",
-                        action='store_true',
-                        help="Only extract text (no metadata or references)")
+    parser.add_argument(
+        "-t",
+        "--text",
+        action="store_true",
+        help="Only extract text (no metadata or references)",
+    )
 
-    parser.add_argument("-o", "--output-file",
-                        help="Output to specified file instead of console")
+    parser.add_argument(
+        "-o", "--output-file", help="Output to specified file instead of console"
+    )
 
-    parser.add_argument("--version",
-                        action="version",
-                        version="%(prog)s v{version}".format(
-                            version=linkrot.__version__))
+    parser.add_argument(
+        "--version",
+        action="version",
+        version="%(prog)s v{version}".format(version=linkrot.__version__),
+    )
     return parser
 
 
@@ -127,11 +136,11 @@ def print_to_console(text):
     try:
         sys.stdout.write(text)
     except UnicodeEncodeError:
-        bytes_string = text.encode(sys.stdout.encoding, 'backslashreplace')
-        if hasattr(sys.stdout, 'buffer'):
+        bytes_string = text.encode(sys.stdout.encoding, "backslashreplace")
+        if hasattr(sys.stdout, "buffer"):
             sys.stdout.buffer.write(bytes_string)
         else:
-            text = bytes_string.decode(sys.stdout.encoding, 'strict')
+            text = bytes_string.decode(sys.stdout.encoding, "strict")
             sys.stdout.write(text)
     sys.stdout.write("\n")
 
@@ -192,22 +201,14 @@ def main():
         refs_all = pdf.get_references()
         refs = [ref for ref in refs_all if ref.reftype in ["url", "pdf"]]
         print("\nChecking %s URLs for broken links..." % len(refs))
-        result = check_refs(refs)
-
-        if args.output_file:
-            # to file (in utf-8)
-            with codecs.open(args.output_file, "a+", "utf-8") as f:
-                f.write("\nChecking %s URLs for broken links..." % len(refs))
-                f.write(result)
+        check_refs(refs)
 
     try:
         if args.download_pdfs:
-            if args.output_file:
-                # to file (in utf-8)
-                with codecs.open(args.output_file, "a+", "utf-8") as f:
-                    f.write("\nDownloading %s pdfs to '%s'..." %(len(pdf.get_references("pdf")), args.download_pdfs))
-
-            print("\nDownloading %s pdfs to '%s'..." %(len(pdf.get_references("pdf")), args.download_pdfs))
+            print(
+                "\nDownloading %s pdfs to '%s'..."
+                % (len(pdf.get_references("pdf")), args.download_pdfs)
+            )
             pdf.download_pdfs(args.download_pdfs)
             print("All done!")
     except Exception as e:
