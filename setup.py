@@ -28,8 +28,6 @@ setup(
     version="1.2",
 
     description='Extract metadata and URLs from PDF files',
-    long_description='This is the long description.',
-    long_description_content_type="text/markdown",
     # The project's main homepage.
     url='https://github.com/marshalmiller/linkrot',
 
