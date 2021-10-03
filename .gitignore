@@ -30,9 +30,7 @@ linkrot-dev/.gitignore
 marshalmiller Update .gitignore
 Latest commit 63280e5 8 days ago
 History
-2 contributors
 @marshalmiller
-@metachris
 62 lines (52 sloc) 733 Bytes
 #Mac
 .DS_Store

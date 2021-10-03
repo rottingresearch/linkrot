@@ -25,7 +25,7 @@ linkrot can be used to extract infos from PDF in two ways:
 >>> references_dict = pdf.get_references_as_dict()
 >>> pdf.download_pdfs("target-directory")
 
-https://www.metachris.com/linkrot
+https://github.com/marshalmiller/linkrot
 
 Copyright (c) 2021, Marshal Miller <marshal@marshalmiller.com>
 License: GPLv3

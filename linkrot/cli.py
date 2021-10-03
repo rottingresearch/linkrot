@@ -42,7 +42,7 @@ def create_parser():
     parser = argparse.ArgumentParser(
         description="Extract metadata and references from a PDF, and "
         "optionally download all referenced PDFs. Visit "
-        "https://www.metachris.com/linkrot for more information.",
+        "https://github.com/marshalmiller/linkrot for more information.",
         epilog="",
     )
 
