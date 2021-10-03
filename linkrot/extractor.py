@@ -26,17 +26,43 @@ URL_REGEX = r"""(?i)\b((?:https?:(?:/{1,3}|[a-z0-9%])|[a-z0-9.\-]+[.](?:com|net|
 
 
 def extract_urls(text):
+    """
+    This function will return all the unique URLs found in the `text` argument.
+     
+    - First we remove all newlines
+    - Then we use the regex to find all matches
+    - Finally we turn the list into a set, so we only end up with unique URLs (no duplicates)
+    """
+
     text = text.replace("\n", '')
     return set(re.findall(URL_REGEX, text, re.IGNORECASE))
 
 
 def extract_arxiv(text):
+    """
+    This function will return all the unique `arvix.org/abs/` or `arvix:`.
+    
+    - First we find all matches of the form `arvix:`
+    - Then we find all matches of the form `arvic.org/abs/`
+    - Then we concat them into a single list
+    - Then we strip out any `.` from the start and end of any item in the list
+    - Finally we turn the list into a set, so we only end up with unique URLs (no duplicates)
+    """
+
     res = re.findall(ARXIV_REGEX, text, re.IGNORECASE) + \
         re.findall(ARXIV_REGEX2, text, re.IGNORECASE)
     return set([r.strip(".") for r in res])
 
 
 def extract_doi(text):
+    """
+    This function will return all the unique DOIs found in `text` argument.
+    
+    - First we find all matches of the form `DOI:`
+    - Then we strip out any `.` from the start and end of any item in the list
+    - Finally we turn the list into a set, so we only end up with unique DOIs (no duplicates)
+    """
+    
     res = set(re.findall(DOI_REGEX, text, re.IGNORECASE))
     return set([r.strip(".") for r in res])
 
