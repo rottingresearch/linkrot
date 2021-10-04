@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#importing modules
 from __future__ import absolute_import, division, print_function, unicode_literals
 from .colorprint import colorprint, OKGREEN, FAIL
 from .threadpool import ThreadPool
@@ -18,7 +19,7 @@ else:
 
     unicode = str
 
-
+#global variable
 MAX_THREADS_DEFAULT = 7
 
 # Used to allow downloading files even if https certificate doesn't match
@@ -108,7 +109,7 @@ def download_urls(
     def vprint(s):
         if verbose:
             print(s)
-
+#Download URL content in Directory
     def download_url(url):
         try:
             fn = url.split("/")[-1].split("?")[0]
@@ -138,7 +139,7 @@ def download_urls(
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
         vprint("Created directory '%s'" % output_directory)
-
+#Start a threadpool and add the download url tasks.
     try:
         pool = ThreadPool(5)
         pool.map(download_url, urls)
