@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=12.0, minimum-scale=1, user-scalable=yes"
+    />
+
+    <link rel="icon" href="../static/img/logo.png" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename= 'css/style.css') }}"
+    />
+    <title>Linkrot</title>
+    <script>
+      function toggleMobileNavigation() {
+        var element = document.getElementById("mobile-navigation");
+
+        if (element.classList.contains("mobile-navigation__open")) {
+          element.classList.remove("mobile-navigation__open");
+        } else {
+          element.classList.add("mobile-navigation__open");
+        }
+      }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="mobile-navigation" id="mobile-navigation">
+      <div class="mobile-navigation--header">
+        <img src="../static/img/logo.png" alt="" />
+
+        <div class="close-button" onclick="toggleMobileNavigation()">
+          <button>
+            <i class="fa fa-close"></i>
+          </button>
+        </div>
+      </div>
+
+      <a href="{{ url_for('upload_form')}}" class="mobile-navigation--item"
+        >Home</a
+      >
+      <a href="{{ url_for('about')}}" class="mobile-navigation--item">About</a>
+    </div>
+    <div id="container">
+      <header>
+        <a class="logo" href="{{ url_for('upload_form')}}"
+          ><img src="../static/img/logo.png" alt=""
+        /></a>
+
+        <nav class="navigation">
+          <a href="{{ url_for('upload_form')}}" class="navigation--item"
+            >Home</a
+          >
+          <a href="{{ url_for('about')}}" class="navigation--item">About</a>
+        </nav>
+
+        <div class="menu--button" onclick="toggleMobileNavigation()">
+          <button>
+            <i class="fa fa-reorder"></i>
+          </button>
+        </div>
+      </header>
+      <main class="about--main">
+        <h1 class="important">Analysis of PDF</h1>
+        <div id="doc-info">
+          <h1 class="subhead">Document Information</h1>
+          <ul>
+            {% for i in meta_titles %} {% set item_1 = meta_titles[loop.index-1]
+            %} {% set item_2 = meta_values[loop.index-1] %}
+            <li><span class="meta-title">{{item_1}}</span
+            ><span class="meta-values">{{item_2}}</span></li></br>
+            {% endfor %}
+          </ul>
+        </div>
+        <div id="pdfs">
+          <h1 class="subhead">PDF References</h1>
+          <ol>
+          {% for pdf in pdfs %}
+          <li><a class="pdf-link" href="{{pdf}}">{{pdf}}</a></li></br>
+          {% endfor %}
+          </ol>
+        </div>
+        <div id="urls">
+          <h1 class="subhead">URL References</h1>
+          <ol>
+          {% for url in urls %}
+          <li><a class="url-link" href="{{url}}">{{url}}</a></li></br>
+          {% endfor %}
+          </ol>
+        </div>
+      </main>
+      <footer>
+        <div class="social">
+          <a
+            href="https://github.com/marshalmiller/linkrot"
+            target="_blank"
+            class="socials--item"
+          >
+            <i class="fa fa-github"></i>
+          </a>
+        </div>
+      </footer>
+    </div>
+    <script></script>
+  </body>
+</html>
