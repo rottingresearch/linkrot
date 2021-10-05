@@ -11,13 +11,19 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
+
 def parse_requirements(filename):
     """ load requirements from a pip requirements file """
     lineiter = (line.strip() for line in open(filename))
     return [line for line in lineiter if line and not line.startswith("#")]
 
+
 here = path.abspath(path.dirname(__file__))
 reqs = parse_requirements(path.join(here, "requirements.txt"))
+
+# Parses README
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name='linkrot',
@@ -27,7 +33,11 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version="2.0",
 
+    # Package Descriptions
     description='Extract metadata and URLs from PDF files',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+
     # The project's main homepage.
     url='https://github.com/marshalmiller/linkrot',
 
