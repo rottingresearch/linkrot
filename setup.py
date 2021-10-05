@@ -11,10 +11,12 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
+
 def parse_requirements(filename):
     """ load requirements from a pip requirements file """
     lineiter = (line.strip() for line in open(filename))
     return [line for line in lineiter if line and not line.startswith("#")]
+
 
 here = path.abspath(path.dirname(__file__))
 reqs = parse_requirements(path.join(here, "requirements.txt"))
