@@ -17,30 +17,45 @@ Scans pdfs for links written in plaintext and checks if they are active or retur
 
 Grab a copy of the code with pip or snap:
  
-`pip install linkrot`  
+```bash
+pip install linkrot
+```
 
-`snap install linkrot`
+```bash
+snap install linkrot
+```
 
 # Usage
 
-`linkrot [pdf-file-or-url]`  
+linkrot can be used to extract info from a PDF in two ways:
+- Command line/Terminal tool `linkrot`
+- Python library `import linkrot`
+
+## 1. Command Line/Terminal tool
+
+```bash
+linkrot [pdf-file-or-url]
+```
 
 Run linkrot -h to see the help output:
-`linkrot -h`  
+```bash
+linkrot -h
+```
 
-usage: linkrot [-h] [-d OUTPUT_DIRECTORY] [-c] [-j] [-v] [-t] [-o OUTPUT_FILE]
-            [--version]
-            pdf
+usage: 
+```bash 
+linkrot [-h] [-d OUTPUT_DIRECTORY] [-c] [-j] [-v] [-t] [-o OUTPUT_FILE] [--version] pdf
+```
 
 Extract metadata and references from a PDF, and optionally download all
 referenced PDFs.
 
-# Arguments
+### Arguments
 
-## positional arguments:
+#### positional arguments:
   pdf                   (Filename or URL of a PDF file)  
 
-## optional arguments:
+#### optional arguments:
     -h, --help            (Show this help message and exit)  
     -d OUTPUT_DIRECTORY,  --download-pdfs OUTPUT_DIRECTORY (Download all referenced PDFs into specified directory)  
     -c, --check-links     (Check for broken links)  
@@ -50,16 +65,225 @@ referenced PDFs.
     -o OUTPUT_FILE,        --output-file OUTPUT_FILE (Output to specified file instead of console)  
     --version             (Show program's version number and exit)  
 
-# Examples
+### Examples
 
-## Extract text to console
-`linkrot https://example.com/example.pdf -t`
+#### Extract text to console
+```bash
+linkrot https://example.com/example.pdf -t
+```
 
-## Extract text to file
-`linkrot https://example.com/example.pdf -t -o pdf-text.txt`
+#### Extract text to file
+```bash
+linkrot https://example.com/example.pdf -t -o pdf-text.txt
+```
 
-## Check Links
-`linkrot https://example.com/example.pdf -c`
+#### Check Links
+```bash
+linkrot https://example.com/example.pdf -c
+```
+
+## 2. Main Python Library
+
+Import the library: 
+```python
+import linkrot
+```
+
+Create an instance of the linkrot class like so: 
+```python
+pdf = linkrot.linkrot("filename-or-url.pdf") #pdf is the instance of the linkrot class
+```
+
+Now the following function can be used to extract specific data from the pdf:
+
+### get_metadata()
+Arguments: None
+
+Usage: 
+```python
+metadata = pdf.get_metadata() #pdf is the instance of the linkrot class
+``` 
+
+Return type: Dictionary `<class 'dict'>`
+
+Information Provided: All metadata, secret metadata associated with the PDF including Creation date, Creator, Title, etc...
+
+### get_text()
+Arguments: None
+
+Usage: 
+```python
+text = pdf.get_text() #pdf is the instance of the linkrot class
+```
+
+Return type: String `<class 'str'>`
+
+Information Provided: The entire content of the PDF in string form.
+
+### get_references(reftype=None, sort=False)
+Arguments: 
+
+	reftype: The type of reference that is needed 
+		 values: 'pdf', 'url', 'doi', 'arxiv'. 
+		 default: Provides all reference types.
+	
+	sort: Whether reference should be sorted or not
+	      values: True or False. 
+	      default: Is not sorted.
+	
+Usage: 
+```python
+references_list = pdf.get_references() #pdf is the instance of the linkrot class
+```
+
+Return type: Set `<class 'set'>` of `<linkrot.backends.Reference object>`
+
+	linkrot.backends.Reference object has 3 member variables:
+	- ref: actual URL/PDF/DOI/ARXIV
+	- reftype: type of reference
+	- page: page on which it was referenced
+
+Information Provided: All references with their corresponding type and page number. 
+
+### get_references_as_dict(reftype=None, sort=False)
+Arguments: 
+
+	reftype: The type of reference that is needed 
+		 values: 'pdf', 'url', 'doi', 'arxiv'. 
+		 default: Provides all reference types.
+	
+	sort: Whether reference should be sorted or not
+	      values: True or False. 
+	      default: Is not sorted.
+	
+Usage: 
+```python
+references_dict = pdf.get_references_as_dict() #pdf is the instance of the linkrot class
+```
+
+Return type: Dictionary `<class 'dict'>` with keys 'pdf', 'url', 'doi', 'arxiv' that each have a list `<class 'list'>` of refs of that type.
+
+Information Provided: All references in their corresponding type list.
+
+
+### download_pdfs(target_dir)
+Arguments: 
+
+	target_dir: The path of the directory to which the reference pdfs should be downloaded 
+	
+Usage: 
+```python
+pdf.download_pdfs("target-directory") #pdf is the instance of the linkrot class
+```
+
+Return type: None
+
+Information Provided: Downloads all the reference pdfs to specified directory.
+
+## 3. Linkrot downloader functions
+
+Import:
+```python
+from linkrot.downloader import sanitize_url, get_status_code, check_refs
+```
+### sanitize_url(url)
+Arguments: 
+
+	url: The url to be sanitized.
+	
+Usage: 
+```python
+new_url = sanitize_url(old_url) 
+```
+
+Return type: String `<class 'str'>`
+
+Information Provided: URL is prefixed with 'http://' if it was not before and makes sure it is in utf-8 format.
+
+### get_status_code(url)
+Arguments: 
+
+	url: The url to be checked for its status. 
+	
+Usage: 
+```python
+status_code = get_status_code(url) 
+```
+
+Return type: String `<class 'str'>`
+
+Information Provided: Checks if the url is active or broken.
+
+### check_refs(refs, verbose=True, max_threads=MAX_THREADS_DEFAULT)
+Arguments: 
+
+	refs: set of linkrot.backends.Reference objects
+	verbose: whether it should print every reference with its code or just the summary of the link checker
+	max_threads: number of threads for multithreading
+	
+Usage: 
+```python
+check_refs(pdf.get_references()) #pdf is the instance of the linkrot class
+```
+
+Return type: None
+
+Information Provided: Prints references with their status code and a summary of all the broken/active links on terminal.
+
+## 4. Linkrot extractor functions
+
+Import:
+```python
+from linkrot.extractor import extract_urls, extract_doi, extract_arxiv
+```
+
+Get pdf text:
+```python
+text = pdf.get_text() #pdf is the instance of the linkrot class
+```
+
+### extract_urls(text)
+Arguments: 
+
+	text: String of text to extract urls from
+	
+Usage: 
+```python
+urls = extract_urls(text)
+```
+
+Return type: Set `<class 'set'>` of URLs
+
+Information Provided: All URLs in the text
+
+### extract_arxiv(text)
+Arguments: 
+
+	text: String of text to extract arxivs from
+	
+Usage: 
+```python
+arxiv = extract_arxiv(text)
+```
+
+Return type: Set `<class 'set'>` of arxivs
+
+Information Provided: All arxivs in the text
+
+### extract_doi(text)
+Arguments: 
+
+	text: String of text to extract dois from
+	
+Usage: 
+```python
+doi = extract_doi(text)
+```
+
+Return type: Set `<class 'set'>` of dois
+
+Information Provided: All dois in the text
+
             
 # License
 This program is licensed with an [MIT License](https://github.com/marshalmiller/linkrot/blob/main/LICENSE).
