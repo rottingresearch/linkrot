@@ -1,73 +1,50 @@
+Contributing to Our Project
 
-# Contributor Code of Conduct
+We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
 
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, caste, color, religion, or sexual identity and orientation.
+-     Reporting a bug
+-     Discussing the current state of the code
+-     Submitting a fix
+-     Proposing new features
+-     Becoming a maintainer
 
-We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
-## Our Standards
+We Develop with Github
 
-### Examples of behavior that contributes to a positive environment for our community include:
+We use github to host code, to track issues and feature requests, as well as accept pull requests.
 
-- Demonstrating empathy and kindness toward other people
-- Being respectful of differing opinions, viewpoints, and experiences
-- Giving and gracefully accepting constructive feedback
-- Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience
-- Focusing on what is best not just for us as individuals, but for the overall community
+Pull requests are the best way to propose changes to the codebase (we use Github Flow). We actively welcome your pull requests:
 
-### Examples of unacceptable behavior include:
+-     Fork the repo and create your branch from master.
+-     If you've added code that should be tested, add tests.
+-     If you've changed APIs, update the documentation.
+-     Ensure the test suite passes.
+-     Make sure your code lints.
+-     Issue that pull request!
 
-- The use of sexualized language or imagery, and sexual attention or advances of any kind
-- Trolling, insulting or derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others’ private information, such as a physical or email address, without their explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
+Any contributions you make will be under the MIT Software License
 
-## Enforcement Responsibilities
+In short, when you submit code changes, your submissions are understood to be under the same MIT License that covers the project. Feel free to contact the maintainers if that's a concern.
+Report bugs using Github's issues
 
-Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
+We use GitHub issues to track public bugs. Report a bug by opening a new issue; it's that easy!
+Write bug reports with detail, background, and sample code
 
-Community leaders have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, and will communicate reasons for moderation decisions when appropriate.
-Scope
+Great Bug Reports tend to have:
 
-This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces. Examples of representing our community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
-Enforcement
+-     A quick summary and/or background
+-     Steps to reproduce
+-         Be specific!
+-         Give sample code if you can. My stackoverflow question includes sample code that anyone with a base R setup can run to reproduce what I was seeing
+-     What you expected would happen
+-     What actually happens
+-     Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at marshal@marshalmiller.com. All complaints will be reviewed and investigated promptly and fairly.
+People love thorough bug reports. I'm not even kidding.
 
-All community leaders are obligated to respect the privacy and security of the reporter of any incident.
-Enforcement Guidelines
+## Examples of low quality contributions
 
-Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct:
-
-### 1. Correction
-
-Community Impact: Use of inappropriate language or other behavior deemed unprofessional or unwelcome in the community.
-
-Consequence: A private, written warning from community leaders, providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
-
-### 2. Warning
-
-Community Impact: A violation through a single incident or series of actions.
-
-Consequence: A warning with consequences for continued behavior. No interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
-
-### 3. Temporary Ban
-
-Community Impact: A serious violation of community standards, including sustained inappropriate behavior.
-
-Consequence: A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, is allowed during this period. Violating these terms may lead to a permanent ban.
-
-### 4. Permanent Ban
-
-Community Impact: Demonstrating a pattern of violation of community standards, including sustained inappropriate behavior, harassment of an individual, or aggression toward or disparagement of classes of individuals.
-
-Consequence: A permanent ban from any sort of public interaction within the community.
-Attribution
-
-***
-
-This Code of Conduct is adapted from the Contributor Covenant, version 2.1, available at https://www.contributor-covenant.org/version/2/1/code_of_conduct.html.
-
-Community Impact Guidelines were inspired by Mozilla’s code of conduct enforcement ladder.
-
-For answers to common questions about this code of conduct, see the FAQ at https://www.contributor-covenant.org/faq. Translations are available at https://www.contributor-covenant.org/translations.
+-     Pull requests that are automated e.g. scripted opening pull requests to remove whitespace / fix typos / optimize images.
+-     Pull requests that are disruptive e.g. taking someone else's branch/commits and making a pull request.
+-     Pull requests that are regarded by a project maintainer as a hindrance vs. helping.
+-     Something that's clearly an attempt to simply +1 your pull request count for October.
+-     Last but not least, one pull request to fix a typo is fine, but 5 pull requests to remove a stray whitespace is not. 
