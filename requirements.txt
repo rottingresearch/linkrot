@@ -1,2 +1,2 @@
-pdfminer.six==20201018
+pdfminer.six==20211012
 chardet==4.0.0
