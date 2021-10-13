@@ -7,6 +7,7 @@ from collections import defaultdict
 import ssl
 import os
 import sys
+import re
 
 IS_PY2 = sys.version_info < (3, 0)
 
@@ -32,7 +33,8 @@ else:
 
 def sanitize_url(url):
     """ Make sure this url works with urllib2 (ascii, http, etc) """
-    if url and not url.startswith("http"):
+    if url and not re.match('^http', url, re.IGNORECASE):
+    #if url and not url.startswith("http"):
         url = "http://%s" % url
     url = url.encode("ascii", "ignore").decode("utf-8")
     return url
