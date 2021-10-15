@@ -1,4 +1,4 @@
-name: Lint and test
+name: Lint and Test
 
 on: [push, pull_request]
 
@@ -36,6 +36,7 @@ jobs:
         pip -V
 
     - name: Lint
+      continue-on-error: true
       run: make lint
 
 
