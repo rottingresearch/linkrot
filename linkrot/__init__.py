@@ -202,8 +202,8 @@ class linkrot(object):
         if not urls:
             return
 
-        dir_referenced_pdfs = os.path.join(target_dir,\
-                                           "%s-referenced-pdfs" % self.fn)
+        dir_referenced_pdfs = os.path.join(target_dir,
+                       "%s-referenced-pdfs" % self.fn)
         logger.debug("Downloading %s referenced pdfs..." % len(urls))
 
         # Download urls as a set to avoid duplicates
