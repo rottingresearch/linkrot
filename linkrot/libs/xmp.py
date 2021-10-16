@@ -7,9 +7,6 @@ Parses XMP metadata from PDF files.
 
 By Matt Swain. Released under the MIT license.
 
-http://blog.matt-swain.com/post/25650072381/a-lightweight-xmp-parser-for-extracting-pdf
-"""
-
 from collections import defaultdict
 from xml.etree import ElementTree as ET
 

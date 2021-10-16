@@ -3,7 +3,8 @@
 PDF Backend: pdfMiner
 """
 
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import absolute_import, division, print_function,\
+ unicode_literals
 
 import sys
 import logging
@@ -25,7 +26,8 @@ pdfminer_settings.STRICT = False
 from pdfminer import psparser  # noqa: E402
 from pdfminer.pdfdocument import PDFDocument  # noqa: E402
 from pdfminer.pdfparser import PDFParser  # noqa: E402
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter  # noqa: E402
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter\
+  # noqa: E402
 from pdfminer.pdfpage import PDFPage  # noqa: E402
 from pdfminer.pdftypes import resolve1, PDFObjRef  # noqa: E402
 from pdfminer.converter import TextConverter  # noqa: E402
@@ -183,7 +185,8 @@ class ReaderBackend(object):
 
 
 class PDFMinerBackend(ReaderBackend):
-    def __init__(self, pdf_stream, password="", pagenos=[], maxpages=0):  # noqa: C901
+    def __init__(self, pdf_stream, password="", pagenos=[], maxpages=0):\
+      # noqa: C901
         ReaderBackend.__init__(self)
         self.pdf_stream = pdf_stream
 
@@ -211,7 +214,8 @@ class PDFMinerBackend(ReaderBackend):
         text_io = BytesIO()
         rsrcmgr = PDFResourceManager(caching=True)
         converter = TextConverter(
-            rsrcmgr, text_io, codec="utf-8", laparams=LAParams(), imagewriter=None
+            rsrcmgr, text_io, codec="utf-8", laparams=LAParams(),\
+             imagewriter=None
         )
         interpreter = PDFPageInterpreter(rsrcmgr, converter)
 
@@ -302,7 +306,8 @@ class PDFMinerBackend(ReaderBackend):
 
             if "URI" in obj_resolved["A"]:
                 # print("->", a["A"]["URI"])
-                return Reference(obj_resolved["A"]["URI"].decode("utf-8"), self.curpage)
+                return Reference(obj_resolved["A"]["URI"].decode("utf-8"),\
+                 self.curpage)
 
 
 class TextBackend(ReaderBackend):

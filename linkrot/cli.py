@@ -4,7 +4,8 @@
 Command line tool to get metadata and URLs from a local or remote PDF,
 and optionally download all referenced PDFs.
 """
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import absolute_import, division, print_function,\
+ unicode_literals
 
 import sys
 import argparse
@@ -56,7 +57,8 @@ def create_parser():
     )
 
     parser.add_argument(
-        "-c", "--check-links", action="store_true", help="Check for broken links"
+        "-c", "--check-links", action="store_true",\
+         help="Check for broken links"
     )
 
     parser.add_argument(
@@ -86,7 +88,8 @@ def create_parser():
     )
 
     parser.add_argument(
-        "-o", "--output-file", help="Output to specified file instead of console"
+        "-o", "--output-file", help="Output to specified file\
+         instead of console"
     )
 
     parser.add_argument(
