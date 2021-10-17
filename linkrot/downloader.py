@@ -130,11 +130,11 @@ def download_urls(
                 status_code = response.getcode()
                 if status_code == 200:
                     f.write(urlopen(request).read())
-                    colorprint(OKGREEN, "Downloaded '%s' to '%s'" % (url,
-                                fn_download))
+                    colorprint(OKGREEN, "Downloaded '%s' to '%s'" %
+                              (url, fn_download))
                 else:
-                    colorprint(FAIL, "Error downloading '%s' (%s)" % (url,
-                                status_code))
+                    colorprint(FAIL, "Error downloading '%s' (%s)" %
+                              (url, status_code))
         except HTTPError as e:
             colorprint(FAIL, "Error downloading '%s' (%s)" % (url, e.code))
         except URLError as e:
