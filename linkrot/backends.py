@@ -307,7 +307,7 @@ class PDFMinerBackend(ReaderBackend):
             if "URI" in obj_resolved["A"]:
                 # print("->", a["A"]["URI"])
                 return Reference(obj_resolved["A"]["URI"].decode("utf-8"),
-                                    self.curpage)
+                                self.curpage)
 
 
 class TextBackend(ReaderBackend):
