@@ -28,14 +28,14 @@ NS_MAP = {
 
 
 class XmpParser(object):
-"""
-Parses an XMP string into a dictionary.
+    """
+        Parses an XMP string into a dictionary.
 
-Usage:
+        Usage:
 
-    parser = XmpParser(xmpstring)
-    meta = parser.meta
-"""
+            parser = XmpParser(xmpstring)
+            meta = parser.meta
+    """
 
     def __init__(self, xmp):
         self.tree = ET.XML(xmp)
