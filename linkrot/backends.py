@@ -183,7 +183,9 @@ class ReaderBackend(object):
 
 
 class PDFMinerBackend(ReaderBackend):
-    def __init__(self, pdf_stream, password="", pagenos=[], maxpages=0):  # noqa: C901
+    def __init__(self, pdf_stream, password="", pagenos=None, maxpages=0):  # noqa: C901
+        if pagenos is None:
+            pagenos = []
         ReaderBackend.__init__(self)
         self.pdf_stream = pdf_stream
 
