@@ -31,9 +31,8 @@ class XmpParser(object):
 # Parses an XMP string into a dictionary.
 
 Usage:
-
-        parser = XmpParser(xmpstring)
-        meta = parser.meta
+    parser = XmpParser(xmpstring)
+    meta = parser.meta
     """
 
     def __init__(self, xmp):
