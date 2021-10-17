@@ -6,6 +6,7 @@ xmp.py
 Parses XMP metadata from PDF files.
 
 By Matt Swain. Released under the MIT license.
+"""
 
 from collections import defaultdict
 from xml.etree import ElementTree as ET
