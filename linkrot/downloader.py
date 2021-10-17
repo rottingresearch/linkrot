@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-#importing modules
-from __future__ import absolute_import, division, print_function, unicode_literals
+# importing modules
+from __future__ import absolute_import, division, print_function,\
+ unicode_literals
 from .colorprint import colorprint, OKGREEN, FAIL
 from .threadpool import ThreadPool
 from collections import defaultdict
@@ -20,7 +21,7 @@ else:
 
     unicode = str
 
-#global variable
+# global variable
 MAX_THREADS_DEFAULT = 7
 
 # Used to allow downloading files even if https certificate doesn't match
@@ -34,7 +35,7 @@ else:
 def sanitize_url(url):
     """ Make sure this url works with urllib2 (ascii, http, etc) """
     if url and not re.match('^http', url, re.IGNORECASE):
-    #if url and not url.startswith("http"):
+        # if url and not url.startswith("http"):
         url = "http://%s" % url
     url = url.encode("ascii", "ignore").decode("utf-8")
     return url
@@ -46,7 +47,8 @@ def get_status_code(url):
         request = Request(sanitize_url(url))
         request.add_header(
             "User-Agent",
-            "Mozilla/5.0 (compatible; MSIE 9.0; " "Windows NT 6.1; Trident/5.0)",
+            "Mozilla/5.0 (compatible; MSIE 9.0; " "Windows NT 6.1;\
+             Trident/5.0)",
         )
         request.get_method = lambda: "HEAD"
         response = urlopen(request, context=ssl_unverified_context)
@@ -111,7 +113,8 @@ def download_urls(
     def vprint(s):
         if verbose:
             print(s)
-#Download URL content in Directory
+# Download URL content in Directory
+
     def download_url(url):
         try:
             fn = url.split("/")[-1].split("?")[0]
@@ -127,9 +130,11 @@ def download_urls(
                 status_code = response.getcode()
                 if status_code == 200:
                     f.write(urlopen(request).read())
-                    colorprint(OKGREEN, "Downloaded '%s' to '%s'" % (url, fn_download))
+                    colorprint(OKGREEN, "Downloaded '%s' to '%s'" %
+                                        (url, fn_download))
                 else:
-                    colorprint(FAIL, "Error downloading '%s' (%s)" % (url, status_code))
+                    colorprint(FAIL, "Error downloading '%s' (%s)" %
+                                     (url, status_code))
         except HTTPError as e:
             colorprint(FAIL, "Error downloading '%s' (%s)" % (url, e.code))
         except URLError as e:
@@ -141,7 +146,7 @@ def download_urls(
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
         vprint("Created directory '%s'" % output_directory)
-#Start a threadpool and add the download url tasks.
+# Start a threadpool and add the download url tasks.
     try:
         pool = ThreadPool(5)
         pool.map(download_url, urls)

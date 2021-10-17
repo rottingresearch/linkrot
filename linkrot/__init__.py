@@ -30,7 +30,8 @@ https://github.com/marshalmiller/linkrot
 Copyright (c) 2021, Marshal Miller <marshal@marshalmiller.com>
 License: GPLv3
 """
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import absolute_import, division, print_function,\
+    unicode_literals
 
 __title__ = "linkrot"
 __version__ = "1.2"
@@ -115,11 +116,13 @@ class linkrot(object):
                 content = urlopen(Request(uri)).read()
                 self.stream = BytesIO(content)
             except Exception as e:
-                raise DownloadError("Error downloading '%s' (%s)" % (uri, unicode(e)))
+                raise DownloadError("Error downloading\
+                '%s' (%s)" % (uri, unicode(e)))
 
         else:
             if not os.path.isfile(uri):
-                raise FileNotFoundError("Invalid filename and not an url: '%s'" % uri)
+                raise FileNotFoundError("Invalid filename\
+                and not an url: '%s'" % uri)
             self.fn = os.path.basename(uri)
             self.stream = open(uri, "rb")
 
@@ -199,7 +202,8 @@ class linkrot(object):
         if not urls:
             return
 
-        dir_referenced_pdfs = os.path.join(target_dir, "%s-referenced-pdfs" % self.fn)
+        dir_referenced_pdfs = os.path.join(target_dir,
+                                           "%s-referenced-pdfs" % self.fn)
         logger.debug("Downloading %s referenced pdfs..." % len(urls))
 
         # Download urls as a set to avoid duplicates

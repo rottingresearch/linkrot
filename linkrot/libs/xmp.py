@@ -6,8 +6,6 @@ xmp.py
 Parses XMP metadata from PDF files.
 
 By Matt Swain. Released under the MIT license.
-
-http://blog.matt-swain.com/post/25650072381/a-lightweight-xmp-parser-for-extracting-pdf
 """
 
 from collections import defaultdict
@@ -31,12 +29,12 @@ NS_MAP = {
 
 class XmpParser(object):
     """
-    Parses an XMP string into a dictionary.
+        Parses an XMP string into a dictionary.
 
-    Usage:
+        Usage:
 
-        parser = XmpParser(xmpstring)
-        meta = parser.meta
+            parser = XmpParser(xmpstring)
+            meta = parser.meta
     """
 
     def __init__(self, xmp):
@@ -52,7 +50,7 @@ class XmpParser(object):
                 el
             ) in (
                 desc.iter()
-            ):  # getchildren() is deprecated since python 2.7 and 3.2, fixed it
+            ):
                 ns, tag = self._parse_tag(el)
                 value = self._parse_value(el)
                 meta[ns][tag] = value
