@@ -214,8 +214,8 @@ class PDFMinerBackend(ReaderBackend):
         text_io = BytesIO()
         rsrcmgr = PDFResourceManager(caching=True)
         converter = TextConverter(
-            rsrcmgr, text_io, codec="utf-8", laparams=LAParams(),\
-             imagewriter=None
+            rsrcmgr, text_io, codec="utf-8", laparams=LAParams(),
+            imagewriter=None
         )
         interpreter = PDFPageInterpreter(rsrcmgr, converter)
 
@@ -306,8 +306,8 @@ class PDFMinerBackend(ReaderBackend):
 
             if "URI" in obj_resolved["A"]:
                 # print("->", a["A"]["URI"])
-                return Reference(obj_resolved["A"]["URI"].decode("utf-8"),\
-                 self.curpage)
+                return Reference(obj_resolved["A"]["URI"].decode("utf-8"),
+                self.curpage)
 
 
 class TextBackend(ReaderBackend):

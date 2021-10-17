@@ -57,8 +57,8 @@ def create_parser():
     )
 
     parser.add_argument(
-        "-c", "--check-links", action="store_true",\
-         help="Check for broken links"
+        "-c", "--check-links", action="store_true",
+        help="Check for broken links"
     )
 
     parser.add_argument(
