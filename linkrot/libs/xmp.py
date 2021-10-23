@@ -45,15 +45,16 @@ class XmpParser(object):
     def meta(self):
         """ A dictionary of all the parsed metadata. """
         meta = defaultdict(dict)
-        for desc in self.rdftree.findall(RDF_NS + "Description"):
-            for (
-                el
-            ) in (
-                desc.iter()
-            ):
-                ns, tag = self._parse_tag(el)
-                value = self._parse_value(el)
-                meta[ns][tag] = value
+        if self.rdftree:
+            for desc in self.rdftree.findall(RDF_NS + "Description"):
+                for (
+                    el
+                ) in (
+                    desc.iter()
+                ):
+                    ns, tag = self._parse_tag(el)
+                    value = self._parse_value(el)
+                    meta[ns][tag] = value
         return dict(meta)
 
     def _parse_tag(self, el):
