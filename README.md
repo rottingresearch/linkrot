@@ -284,6 +284,8 @@ Return type: Set `<class 'set'>` of dois
 
 Information Provided: All dois in the text
 
+# Code of Conduct
+To view our code of conduct please visit our [Code of Conduct page](https://github.com/marshalmiller/rottingresearch/blob/main/code_of_conduct.md).
             
 # License
 This program is licensed with an [MIT License](https://github.com/marshalmiller/linkrot/blob/main/LICENSE).
