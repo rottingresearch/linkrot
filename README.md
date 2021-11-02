@@ -15,14 +15,10 @@ Scans pdfs for links written in plaintext and checks if they are active or retur
 
 # Installation
 
-Grab a copy of the code with pip or snap:
+Grab a copy of the code with pip:
  
 ```bash
 pip install linkrot
-```
-
-```bash
-snap install linkrot
 ```
 
 # Usage
