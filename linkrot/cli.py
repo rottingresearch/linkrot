@@ -29,6 +29,13 @@ else:
 
 
 def exit_with_error(code, *objs):
+    """Produces the error messsage
+
+    Args:
+        code: Error code
+        *objs: Exception encountered
+
+    """
     print("ERROR %s:" % code, *objs, file=sys.stderr)
     exit(code)
 
@@ -40,12 +47,23 @@ ERROR_PDF_INVALID = 4
 
 
 def create_parser():
+    """Creates the Arguement Parser Object and\
+    adds all the required arguments to it.
+
+    Returns:
+        ArgumentParser
+
+    """
+
+    # Creating the ArgumentParser object
     parser = argparse.ArgumentParser(
         description="Extract metadata and references from a PDF, and "
         "optionally download all referenced PDFs. Visit "
         "https://github.com/marshalmiller/linkrot for more information.",
         epilog="",
     )
+
+    # Adding information about the ArgumentParser about program arguments
 
     parser.add_argument("pdf", help="Filename or URL of a PDF file")
 
@@ -149,6 +167,8 @@ def print_to_console(text):
 
 
 def main():
+
+    # Creating the parser and parsing the arguments
     parser = create_parser()
     args = parser.parse_args()
 
@@ -157,6 +177,7 @@ def main():
     #             level=logging.DEBUG,
     #             format='%(levelname)s - %(module)s - %(message)s')
 
+    # Check if file exists
     try:
         pdf = linkrot.linkrot(args.pdf)
     except linkrot.exceptions.FileNotFoundError as e:
@@ -200,12 +221,14 @@ def main():
             # to console
             print_to_console(text)
 
+    # Checking for broken links
     if args.check_links:
         refs_all = pdf.get_references()
         refs = [ref for ref in refs_all if ref.reftype in ["url", "pdf"]]
         print("\nChecking %s URLs for broken links..." % len(refs))
         check_refs(refs)
 
+    # Check for errors in downloading and then produce the output
     try:
         if args.download_pdfs:
             print(
