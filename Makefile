@@ -8,7 +8,7 @@ deps:  ## Install dependencies
 format:  ## Code formatting
 	black linkrot
 
-lint:  ## Linting (must pass)
+lint:  ## Linting
 	flake8 linkrot
 
 check:  ## Lint and static-check
