@@ -3,5 +3,5 @@ coverage==6.2
 flake8==4.0.1
 mccabe==0.6.1
 mypy==0.910
-pylint==2.12.1
+pylint==2.12.2
 pytest==6.2.5
