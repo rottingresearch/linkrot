@@ -31,8 +31,7 @@ def extract_urls(text):
     - Finally we turn the list into a set, so we only end up with unique URLs\
      (no duplicates)
     """
-    text = text.replace("\n", '')
-    return set(re.findall(URL_REGEX, text, re.IGNORECASE))
+    return set(re.findall(URL_REGEX, text, re.IGNORECASE, re.MULTILINE))
 
 
 def extract_arxiv(text):
@@ -48,8 +47,8 @@ def extract_arxiv(text):
      (no duplicates)
     """
 
-    res = re.findall(ARXIV_REGEX, text, re.IGNORECASE) + re.findall(
-        ARXIV_REGEX2, text, re.IGNORECASE
+    res = re.findall(ARXIV_REGEX, text, re.IGNORECASE, re.MULTILINE) + re.findall(
+        ARXIV_REGEX2, text, re.IGNORECASE, re.MULTILINE
     )
     return set([r.strip(".") for r in res])
 
@@ -64,7 +63,7 @@ def extract_doi(text):
      (no duplicates)
     """
 
-    res = set(re.findall(DOI_REGEX, text, re.IGNORECASE))
+    res = set(re.findall(DOI_REGEX, text, re.IGNORECASE, re.MULTILINE))
     return set([r.strip(".") for r in res])
 
 
