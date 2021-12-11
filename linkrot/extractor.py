@@ -75,7 +75,7 @@ URL_REGEX = r"""
     )
 """
 
-def extract_url(text):
+def extract_urls(text):
     """
     This function will return all the unique URLs found in the `text` argument.
 
