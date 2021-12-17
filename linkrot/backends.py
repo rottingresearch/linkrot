@@ -6,7 +6,6 @@ PDF Backend: pdfMiner
 from __future__ import absolute_import, division, print_function,\
  unicode_literals
 
-import sys
 import logging
 from io import BytesIO
 from re import compile
@@ -37,10 +36,8 @@ from pdfminer.layout import LAParams  # noqa: E402
 logger = logging.getLogger(__name__)
 
 
-IS_PY2 = sys.version_info < (3, 0)
-if not IS_PY2:
-    # Python 3
-    unicode = str
+
+unicode = str
 
 
 def make_compat_str(in_str):
