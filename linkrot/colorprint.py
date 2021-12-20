@@ -21,14 +21,15 @@ ENDC = "\033[0m"
 
 def colorprint(color, s):
     '''Formates the string 's' with the ANSI octal escape sequence(s) 'color'
-       and then makes sure that all the following print statements are of the of standard formatting.
+       and then makes sure that all the following print statements are of the of
+        standard formatting.
 
     Args:
         color: ANSI octal escape sequence(s) to be used for formatting.
         s: The string to be formatted.
 
     Returns:
-        None  
+        None
 
     '''
     print("%s%s%s" % (color, s, ENDC))
