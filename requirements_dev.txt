@@ -1,5 +1,5 @@
 black==21.12b0
-coverage==6.2
+coverage==6.3
 flake8==4.0.1
 mccabe==0.7.0
 mypy==0.931
