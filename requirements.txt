@@ -1,3 +1,2 @@
 pdfminer.six==20211012
 chardet==4.0.0
-newrelic
