@@ -156,3 +156,20 @@ def download_urls(
         print(e)
     except KeyboardInterrupt:
         pass
+
+# Adds links to Wayback Machine from the Internet Archive
+def archive_link(url):
+
+  if 'web.archive' in url:
+    return url,url
+  try:
+    r = requests.get('https://web.archive.org/save/' + url)
+  except:
+    return url,url
+  if r.status_code == 403:
+    return url,url
+  else:
+    try:
+      return url,'https://web.archive.org' + r.headers['content-location']
+    except:
+      return url,url
