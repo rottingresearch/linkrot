@@ -308,9 +308,10 @@ class PDFMinerBackend(ReaderBackend):
                 return self.resolve_PDFObjRef(obj_resolved["A"])
 
             if "URI" in obj_resolved["A"]:
-                # print("->", a["A"]["URI"])
-                return Reference(obj_resolved["A"]["URI"].decode("utf-8"),
-                                 self.curpage)
+                decoded_ref = obj_resolved["A"]["URI"].decode("utf-8")
+                # exclude email addresses
+                if not decoded_ref.startswith("mailto:"):
+                    return Reference(decoded_ref, self.curpage)
 
 
 class TextBackend(ReaderBackend):
