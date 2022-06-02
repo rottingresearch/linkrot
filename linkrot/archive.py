@@ -1,12 +1,7 @@
 # Adds links to Wayback Machine from the Internet Archive
 from __future__ import absolute_import, division, print_function,\
  unicode_literals
-from .colorprint import colorprint, OKGREEN, FAIL
 from .threadpool import ThreadPool
-from collections import defaultdict
-import ssl
-import os
-import sys
 import re
 
 
