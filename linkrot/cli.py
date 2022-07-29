@@ -12,6 +12,8 @@ import argparse
 import json
 import codecs
 
+from numpy import unicode_
+
 import linkrot
 from linkrot.downloader import check_refs
 
@@ -19,7 +21,7 @@ from linkrot.downloader import check_refs
 IS_PY2 = sys.version_info < (3, 0)
 if IS_PY2:
     # Python 2
-    parse_str = unicode  # noqa: F821
+    parse_str = unicode_ # noqa: F821
 else:
     # Python 3
     parse_str = str
