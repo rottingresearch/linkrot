@@ -125,6 +125,7 @@ def get_text_output(pdf, args):
     # Metadata
     ret = ""
     ret += "Document infos:\n"
+    print(pdf.get_metadata())
     for k, v in sorted(pdf.get_metadata().items()):
         if v:
             ret += "- %s = %s\n" % (k, parse_str(v).strip("/"))
