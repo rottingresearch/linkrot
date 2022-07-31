@@ -123,12 +123,12 @@ def create_parser():
 def get_text_output(pdf, args):
     """ Normal output of infos of linkrot instance """
     # Metadata
-    ret = ""
-    ret += "Document infos:\n"
-    print(pdf.get_metadata()[None])
-    for k, v in sorted(pdf.get_metadata().items()):
-        if v:
-            ret += "- %s = %s\n" % (k, parse_str(v).strip("/"))
+    # ret = ""
+    # ret += "Document infos:\n"
+    # print(pdf.get_metadata()[None])
+    # for k, v in sorted(pdf.get_metadata().items()):
+    #     if v:
+    #         ret += "- %s = %s\n" % (k, parse_str(v).strip("/"))
 
     # References
     ref_cnt = pdf.get_references_count()
