@@ -124,7 +124,7 @@ def get_text_output(pdf, args):
     """ Normal output of infos of linkrot instance """
     # Metadata
     ret = ""
-    ret += "Document infos:\n"
+    # ret += "Document infos:\n"
 
     # Remove Sorting to deal with NoneType Error for now. Might come back to this.
     
