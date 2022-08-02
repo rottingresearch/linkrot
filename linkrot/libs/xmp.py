@@ -38,8 +38,6 @@ class XmpParser(object):
     """
 
     def __init__(self, xmp):
-        temp_lines = xmp.splitlines() 
-        print(temp_lines[54])
         self.tree = ET.XML(xmp)
         self.rdftree = self.tree.find(RDF_NS + "RDF")
 
