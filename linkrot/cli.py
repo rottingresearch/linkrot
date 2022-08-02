@@ -124,13 +124,12 @@ def get_text_output(pdf, args):
     """ Normal output of infos of linkrot instance """
     # Metadata
     ret = ""
-    # ret += "Document info:\n"
-
-    # Remove Sorting to deal with NoneType Error for now. Might come back to this.
-    
-    # for k, v in sorted(pdf.get_metadata().items()):
-    #     if v:
-    #         ret += "- %s = %s\n" % (k, parse_str(v).strip("/"))
+    ret += "Document info:\n"
+    metadata = pdf.get_metadata()
+    metadata.pop(None, None)
+    for k, v in sorted(pdf.get_metadata().items()):
+         if v:
+             ret += "- %s = %s\n" % (k, parse_str(v).strip("/"))
 
     # References
     ref_cnt = pdf.get_references_count()
