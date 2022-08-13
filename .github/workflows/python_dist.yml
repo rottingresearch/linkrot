@@ -8,7 +8,7 @@ on:
 jobs:
   build-n-publish:
     name: linkrot
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Set up Python 3.7
