@@ -1,10 +1,6 @@
-# -*- coding: utf-8 -*-
 """
 PDF Backend: pdfMiner
 """
-
-from __future__ import absolute_import, division, print_function,\
- unicode_literals
 
 import sys
 import logging
@@ -51,10 +47,6 @@ def make_compat_str(in_str):
     assert isinstance(in_str, (bytes, str, unicode))
     if not in_str:
         return unicode()
-
-    # Chardet in Py2 works on str + bytes objects
-    if IS_PY2 and isinstance(in_str, unicode):
-        return in_str
 
     # Chardet in Py3 works on bytes objects
     if not IS_PY2 and not isinstance(in_str, bytes):

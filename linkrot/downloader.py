@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
 # importing modules
-from __future__ import absolute_import, division, print_function,\
- unicode_literals
 from .colorprint import colorprint, OKGREEN, FAIL
 from .threadpool import ThreadPool
 from collections import defaultdict
@@ -10,16 +7,10 @@ import os
 import sys
 import re
 
-IS_PY2 = sys.version_info < (3, 0)
 
-if IS_PY2:
-    # Python 2
-    from urllib2 import Request, urlopen, HTTPError, URLError
-else:
-    # Python 3
-    from urllib.request import Request, urlopen, HTTPError, URLError
+from urllib.request import Request, urlopen, HTTPError, URLError
 
-    unicode = str
+unicode = str
 
 # global variable
 MAX_THREADS_DEFAULT = 7
