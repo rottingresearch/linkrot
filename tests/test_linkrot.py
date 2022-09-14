@@ -17,17 +17,17 @@ def test_all():
 
     pdf = linkrot.linkrot(os.path.join(curdir, "pdfs/valid.pdf"))
     urls = pdf.get_references(reftype="pdf")
-    assert len(urls) == 18
+    assert len(urls) == 18, "wrong"
     # pdf.download_pdfs("/tmp/")
 
 
 def test_two_pdfs():
     linkrot.linkrot(os.path.join(curdir, "pdfs/i14doc1.pdf"))
     pdf_2 = linkrot.linkrot(os.path.join(curdir, "pdfs/i14doc2.pdf"))
-    assert len(pdf_2.get_references()) == 2
+    assert len(pdf_2.get_references()) == 2, "wrong"
 
 def test_pdf_with_email_address():
     pdf_with_email_addresses = linkrot.linkrot(os.path.join(curdir, "pdfs/email_test_single_page.pdf"))
     references = pdf_with_email_addresses.get_references()
     # there are only 2 email references in the pdf that should be excluded
-    assert len(references) == 0
+    assert len(references) == 0, "wrong"
