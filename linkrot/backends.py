@@ -277,7 +277,6 @@ class PDFMinerBackend(ReaderBackend):
             obj_resolved = obj_resolved.decode("utf-8")
 
         if isinstance(obj_resolved, (str, unicode)):
-            
             ref = obj_resolved
             return Reference(ref, self.curpage)
 
