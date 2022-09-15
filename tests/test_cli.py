@@ -8,5 +8,5 @@ curdir = os.path.dirname(os.path.realpath(__file__))
 def test_cli():
     parser = cli.create_parser()
     parsed = parser.parse_args(['-j', 'pdfs/valid.pdf'])
-    assert parsed.json, "wrong"
-    assert parsed.pdf == "pdfs/valid.pdf", "wrong"
+    assert parsed.json
+    assert parsed.pdf == "pdfs/valid.pdf"
