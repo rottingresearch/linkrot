@@ -3,13 +3,10 @@
 Command line tool to get metadata and URLs from a local or remote PDF,
 and optionally download all referenced PDFs.
 """
-from __future__ import absolute_import, division, print_function,\
- unicode_literals
 
 import sys
 import argparse
 import json
-import codecs
 
 from numpy import unicode_
 
@@ -188,7 +185,7 @@ def main():
         text = pdf.get_text()
         if args.output_file:
             # to file (in utf-8)
-            with codecs.open(args.output_file, "w", "utf-8") as f:
+            with open(args.output_file, "w", "utf-8") as f:
                 f.write(text)
         else:
             # to console
@@ -201,7 +198,7 @@ def main():
         text = json.dumps(pdf.summary, indent=4)
         if args.output_file:
             # to file (in utf-8)
-            with codecs.open(args.output_file, "w", "utf-8") as f:
+            with open(args.output_file, "w", "utf-8") as f:
                 f.write(text)
         else:
             # to console
@@ -211,7 +208,7 @@ def main():
         text = get_text_output(pdf, args)
         if args.output_file:
             # to file (in utf-8)
-            with codecs.open(args.output_file, "w", "utf-8") as f:
+            with open(args.output_file, "w", "utf-8") as f:
                 f.write(text)
         else:
             # to console

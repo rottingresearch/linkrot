@@ -31,12 +31,7 @@ from pdfminer.layout import LAParams  # noqa: E402
 
 
 logger = logging.getLogger(__name__)
-
-
-IS_PY2 = sys.version_info < (3, 0)
-if not IS_PY2:
-    # Python 3
-    unicode = str
+unicode = str
 
 
 def make_compat_str(in_str):
@@ -49,7 +44,7 @@ def make_compat_str(in_str):
         return unicode()
 
     # Chardet in Py3 works on bytes objects
-    if not IS_PY2 and not isinstance(in_str, bytes):
+    if not isinstance(in_str, bytes):
         return in_str
 
     # Detect the encoding now
@@ -282,10 +277,8 @@ class PDFMinerBackend(ReaderBackend):
             obj_resolved = obj_resolved.decode("utf-8")
 
         if isinstance(obj_resolved, (str, unicode)):
-            if IS_PY2:
-                ref = obj_resolved.decode("utf-8")
-            else:
-                ref = obj_resolved
+            
+            ref = obj_resolved
             return Reference(ref, self.curpage)
 
         if isinstance(obj_resolved, list):
