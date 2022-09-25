@@ -1,30 +1,19 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Command line tool to get metadata and URLs from a local or remote PDF,
 and optionally download all referenced PDFs.
 """
-from __future__ import absolute_import, division, print_function,\
- unicode_literals
 
 import sys
 import argparse
 import json
-import codecs
 
 from numpy import unicode_
 
 import linkrot
 from linkrot.downloader import check_refs
 
-
-IS_PY2 = sys.version_info < (3, 0)
-if IS_PY2:
-    # Python 2
-    parse_str = unicode_
-else:
-    # Python 3
-    parse_str = str
+parse_str = str
 
 # print(sys.version)
 # print("stdout encoding: %s" % sys.stdout.encoding)
@@ -196,7 +185,7 @@ def main():
         text = pdf.get_text()
         if args.output_file:
             # to file (in utf-8)
-            with codecs.open(args.output_file, "w", "utf-8") as f:
+            with open(args.output_file, "w", "utf-8") as f:
                 f.write(text)
         else:
             # to console
@@ -209,7 +198,7 @@ def main():
         text = json.dumps(pdf.summary, indent=4)
         if args.output_file:
             # to file (in utf-8)
-            with codecs.open(args.output_file, "w", "utf-8") as f:
+            with open(args.output_file, "w", "utf-8") as f:
                 f.write(text)
         else:
             # to console
@@ -219,7 +208,7 @@ def main():
         text = get_text_output(pdf, args)
         if args.output_file:
             # to file (in utf-8)
-            with codecs.open(args.output_file, "w", "utf-8") as f:
+            with open(args.output_file, "w", "utf-8") as f:
                 f.write(text)
         else:
             # to console

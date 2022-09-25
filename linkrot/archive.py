@@ -1,8 +1,7 @@
 # Adds links to Wayback Machine from the Internet Archive
-from __future__ import absolute_import, division, print_function,\
- unicode_literals
 from .threadpool import ThreadPool
 import re
+import requests
 
 
 def archive_link(url):

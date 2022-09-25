@@ -5,14 +5,7 @@ Inspired by http://stackoverflow.com/a/7257510
 from threading import Thread
 import sys
 
-IS_PY2 = sys.version_info < (3, 0)
-
-if IS_PY2:
-    # Python 2
-    from Queue import Queue
-else:
-    # Python 3
-    from queue import Queue
+from queue import Queue
 
 
 class Worker(Thread):

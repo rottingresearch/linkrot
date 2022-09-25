@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 """
 Extract metadata and links from a local or remote PDF, and
 optionally download all referenced PDFs.
@@ -30,8 +30,6 @@ https://github.com/marshalmiller/linkrot
 Copyright (c) 2021, Marshal Miller <marshal@marshalmiller.com>
 License: GPLv3
 """
-from __future__ import absolute_import, division, print_function,\
-    unicode_literals
 
 __title__ = "linkrot"
 __version__ = "1.2"
@@ -51,20 +49,10 @@ from .backends import PDFMinerBackend, TextBackend
 from .downloader import download_urls
 from .exceptions import FileNotFoundError, DownloadError, PDFInvalidError
 from pdfminer.pdfparser import PDFSyntaxError
+from io import BytesIO
+from urllib.request import Request, urlopen
 
-
-IS_PY2 = sys.version_info < (3, 0)
-
-if IS_PY2:
-    # Python 2
-    from cStringIO import StringIO as BytesIO
-    from urllib2 import Request, urlopen
-else:
-    # Python 3
-    from io import BytesIO
-    from urllib.request import Request, urlopen
-
-    unicode = str
+unicode = str
 
 logger = logging.getLogger(__name__)
 

@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-
-
 class FileNotFoundError(Exception):
     """
     Raised if PDF URI could not be opened

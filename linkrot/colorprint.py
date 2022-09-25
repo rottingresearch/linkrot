@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, division, print_function,\
- unicode_literals
-
 # Following are the ANSI octal escape sequences for different formatting
 
 HEADER = "\033[95m"
