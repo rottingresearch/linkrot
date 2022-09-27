@@ -2,6 +2,6 @@ black==22.8.0
 coverage==6.4.4
 flake8==5.0.4
 mccabe<=0.7.0
-mypy==0.971
+mypy==0.981
 pylint==2.15.3
 pytest==7.1.3
