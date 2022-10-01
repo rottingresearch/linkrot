@@ -249,14 +249,15 @@ class PDFMinerBackend(ReaderBackend):
         # print(self.text)
 
         # Extract URL references from text
-        for url in extractor.extract_urls(self.text):
-            self.references.add(Reference(url, self.curpage))
+        for pageno, page in enumerate(self.text.split('\x0c'), 1):
+            for url in extractor.extract_urls(page):
+                self.references.add(Reference(url, pageno))
 
-        for ref in extractor.extract_arxiv(self.text):
-            self.references.add(Reference(ref, self.curpage))
+            for ref in extractor.extract_arxiv(page):
+                self.references.add(Reference(ref, pageno))
 
-        for ref in extractor.extract_doi(self.text):
-            self.references.add(Reference(ref, self.curpage))
+            for ref in extractor.extract_doi(page):
+                self.references.add(Reference(ref, pageno))
 
     def resolve_PDFObjRef(self, obj_ref):
         """
