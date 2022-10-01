@@ -9,7 +9,6 @@ import argparse
 import json
 
 from urllib.parse import urlparse
-from numpy import unicode_
 
 import linkrot
 from linkrot.downloader import check_refs
