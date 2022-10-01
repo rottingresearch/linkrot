@@ -27,4 +27,6 @@ def colorprint(color, s):
         None  
 
     '''
-    print("%s%s%s" % (color, s, ENDC))
+    output = "%s%s%s" % (color, s, ENDC)
+    print(output)
+    return output

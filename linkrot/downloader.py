@@ -80,17 +80,21 @@ def check_refs(refs, verbose=True, max_threads=MAX_THREADS_DEFAULT):
         pass
 
     # Print summary
-    print("\nSummary of link checker:")
+    output = "\nSummary of link checker:" 
+    print(output)
     if "200" in codes:
-        colorprint(OKGREEN, "%s working" % len(codes["200"]))
+        output +="\n" +colorprint(OKGREEN, "%s working" % len(codes["200"]))
     for c in sorted(codes):
         if c != "200":
-            colorprint(FAIL, "%s broken (reason: %s)" % (len(codes[c]), c))
-            for ref in codes[c]:
+            output +="\n" + colorprint(FAIL, "%s broken (reason: %s)" % (len(codes[c]), c))
+            for ref in codes[c]:                
                 o = "  - %s" % ref.ref
                 if ref.page > 0:
                     o += " (page %s)" % ref.page
                 print(o)
+                output += "\n" + o
+
+    return output
 
 
 def download_urls(

@@ -228,7 +228,11 @@ def main():
         refs_all = pdf.get_references()
         refs = [ref for ref in refs_all if ref.reftype in ["url", "pdf"]]
         print("\nChecking %s URLs for broken links..." % len(refs))
-        check_refs(refs)
+        output = check_refs(refs)
+        if args.output_file:
+            # to file (in utf-8)
+            with open(args.output_file, "a+", encoding="utf-8") as f:
+                f.write(output)
 
     # Check for errors in downloading and then produce the output
     try:
