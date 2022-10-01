@@ -8,6 +8,7 @@ import sys
 import argparse
 import json
 
+from urllib.parse import urlparse
 from numpy import unicode_
 
 import linkrot
@@ -126,6 +127,15 @@ def get_text_output(pdf, args):
     refs = pdf.get_references_as_dict()
     for k in refs:
         ret += "- %s: %s\n" % (k.upper(), len(refs[k]))
+
+        # doi references
+        if k == 'url':
+            doi_ref = []
+            for u in refs[k]:
+                host = urlparse(u).hostname
+                if host and host.endswith(".doi.org"):
+                    doi_ref.append(u)
+            ret += "- %s: %s\n" % ('DOI', len(doi_ref))
 
     if args.verbose == 0:
         if "pdf" in refs:
