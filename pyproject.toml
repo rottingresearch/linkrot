@@ -66,3 +66,6 @@ include = [
 include = [
 	"/linkrot",
 ]
+
+[project.scripts]
+linkrot= "linkrot.cli:main"
