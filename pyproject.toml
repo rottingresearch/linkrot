@@ -32,7 +32,8 @@ classifiers = [
 ]
 dependencies = [
     "pdfminer.six==20220524",
-    "chardet==5.0.0"
+    "chardet==5.0.0",
+    "lxml==4.9.1",
 ]
 
 [project.optional-dependencies]
@@ -44,6 +45,7 @@ dev = [
 	"mypy==0.981",
 	"pylint==2.15.3",
 	"pytest==7.1.3",
+	"build==0.8.0",
 ]
 test = [
 	"pytest==7.1.3",
