@@ -10,6 +10,7 @@ By Matt Swain. Released under the MIT license.
 
 from collections import defaultdict
 from xml.etree import ElementTree as ET
+from lxml import etree
 
 RDF_NS = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}"
 XML_NS = "{http://www.w3.org/XML/1998/namespace}"
@@ -38,14 +39,14 @@ class XmpParser(object):
     """
 
     def __init__(self, xmp):
-        self.tree = ET.XML(xmp)
+        self.tree = ET.XML(xmp, parser=etree.XMLParser(recover=True,encoding='utf-8'))
         self.rdftree = self.tree.find(RDF_NS + "RDF")
 
     @property
     def meta(self):
         """ A dictionary of all the parsed metadata. """
         meta = defaultdict(dict)
-        if self.rdftree:
+        if self.rdftree is not None:
             for desc in self.rdftree.findall(RDF_NS + "Description"):
                 for (
                     el
