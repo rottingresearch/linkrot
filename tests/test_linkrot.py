@@ -31,3 +31,22 @@ def test_pdf_with_email_address():
     references = pdf_with_email_addresses.get_references()
     # there are only 2 email references in the pdf that should be excluded
     assert len(references) == 0
+
+
+def test_pdf_with_embedded_links():
+    pdf_with_embedded_links = linkrot.linkrot(os.path.join(curdir, "pdfs/embedded_link_testcase.pdf"))
+    references = pdf_with_embedded_links.get_references()
+
+    assert len(references) == 7
+
+
+def test_pdf_with_embedded_link_in_image():
+    pdf_with_embedded_link_in_image = linkrot.linkrot(os.path.join(curdir, "pdfs/embedded_link_image.pdf"))
+    references = pdf_with_embedded_link_in_image.get_references()
+    # assert that the reference was found
+    assert len(references) == 1
+    # get the reference from the set
+    image_ref = references.pop()
+
+    EMBEDDED_LINK_IN_IMAGE = "https://github.com/marshalmiller/linkrot/blob/6e6fb45239f8d06e89671e2ec68a11629747355d/branding/Asset%207@4x.png"
+    assert image_ref.ref == EMBEDDED_LINK_IN_IMAGE
