@@ -8,7 +8,7 @@ import sys
 import argparse
 import json
 
-from numpy import unicode_
+from urllib.parse import urlparse
 
 import linkrot
 from linkrot.downloader import check_refs
@@ -135,6 +135,15 @@ def get_text_output(pdf, args):
     for k in refs:
         ret += "- %s: %s\n" % (k.upper(), len(refs[k]))
 
+        # doi references
+        if k == 'url':
+            doi_ref = []
+            for u in refs[k]:
+                host = urlparse(u).hostname
+                if host and host.endswith(".doi.org"):
+                    doi_ref.append(u)
+            ret += "- %s: %s\n" % ('DOI', len(doi_ref))
+
     if args.verbose == 0:
         if "pdf" in refs:
             ret += "\nPDF References:\n"
@@ -229,6 +238,7 @@ def main():
         print("\nChecking %s URLs for broken links..." % len(refs))
         check_refs(refs)
     
+    # Archive active links 
     if args.archive:
         refs_all = pdf.get_references()
         refs = [ref for ref in refs_all if ref.reftype in ["url"]]
