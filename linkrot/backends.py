@@ -51,7 +51,10 @@ def make_compat_str(in_str):
     enc = chardet.detect(in_str)
 
     # Decode the object into a unicode object
-    out_str = in_str.decode(enc["encoding"])
+    try:
+        out_str = in_str.decode(enc["encoding"])
+    except UnicodeDecodeError as err:
+        out_str = ""
 
     # Cleanup
     if enc["encoding"] == "UTF-16BE":
