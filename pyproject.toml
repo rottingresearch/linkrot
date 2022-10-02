@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling>=1.8.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "linkrot"
+dynamic = ["version"]
+description = "Extract metadata and URLs from PDF files"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.7"
+authors = [
+	{ name = "Marshal Miller", email = "marshal@marshalmiller.com" },
+]
+keywords = [
+	"pdf",
+	"reference",
+	"linkrot",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "pdfminer.six==20220524",
+    "chardet==5.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+	"black==22.8.0",
+	"coverage==6.5.0",
+	"flake8==5.0.4",
+	"mccabe<=0.7.0",
+	"mypy==0.981",
+	"pylint==2.15.3",
+	"pytest==7.1.3",
+]
+test = [
+	"pytest==7.1.3",
+]
+
+[project.urls]
+Homepage = "https://github.com/marshalmiller/linkrot"
+
+[tool.hatch.version]
+path = "linkrot/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+	"/linkrot",
+]
+
+[tool.hatch.build.targets.wheel]
+include = [
+	"/linkrot",
+]
