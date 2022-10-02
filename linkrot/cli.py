@@ -12,6 +12,7 @@ from urllib.parse import urlparse
 
 import linkrot
 from linkrot.downloader import check_refs
+from linkrot.archive import archive_links
 
 parse_str = str
 
@@ -94,6 +95,13 @@ def create_parser():
         "--text",
         action="store_true",
         help="Only extract text (no metadata or references)",
+    )
+    
+    parser.add_argument(
+        "-a",
+        "--archive",
+        action="store_true",
+        help="Archive active links",
     )
 
     parser.add_argument(
@@ -228,11 +236,14 @@ def main():
         refs_all = pdf.get_references()
         refs = [ref for ref in refs_all if ref.reftype in ["url", "pdf"]]
         print("\nChecking %s URLs for broken links..." % len(refs))
-        output = check_refs(refs)
-        if args.output_file:
-            # to file (in utf-8)
-            with open(args.output_file, "a+", encoding="utf-8") as f:
-                f.write(output)
+        check_refs(refs)
+    
+    # Archive active links 
+    if args.archive:
+        refs_all = pdf.get_references()
+        refs = [ref for ref in refs_all if ref.reftype in ["url"]]
+        print("\nArchieve %s URLs..." % len(refs))
+        archive_links(refs)
 
     # Check for errors in downloading and then produce the output
     try:
