@@ -7,9 +7,9 @@ Features
 
 * Extract metadata and PDF URLs from a given PDF
 * Download all PDFs referenced in the original PDF
+* Archive valid links via Internet Archive's Wayback Machine
 * Works with local and online pdfs
 * Use as command-line tool or Python package
-* Compatible with Python 2 and 3
 
 Usage
 
@@ -32,10 +32,10 @@ License: GPLv3
 """
 
 __title__ = "linkrot"
-__version__ = "1.2"
+__version__ = "3.9.4"
 __author__ = "Marshal Miller"
 __license__ = "MIT"
-__copyright__ = "Copyright 2021 Marshal Miller"
+__copyright__ = "Copyright 2022 Marshal Miller"
 
 import os
 import sys
