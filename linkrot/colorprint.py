@@ -27,6 +27,6 @@ def colorprint(color, s):
         None  
 
     '''
-    output = "%s%s%s" % (color, s, ENDC)
+    output = "{}{}{}".format(color, s, ENDC)
     print(output)
     return output

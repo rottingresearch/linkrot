@@ -64,9 +64,9 @@ def check_refs(refs, verbose=True, max_threads=MAX_THREADS_DEFAULT):
         codes[status_code].append(ref)
         if verbose:
             if status_code == "200":
-                colorprint(OKGREEN, "%s - %s" % (status_code, url))
+                colorprint(OKGREEN, "{} - {}".format(status_code, url))
             else:
-                colorprint(FAIL, "%s - %s" % (status_code, url))
+                colorprint(FAIL, "{} - {}".format(status_code, url))
 
     # Start a threadpool and add the check-url tasks
     try:
@@ -86,7 +86,7 @@ def check_refs(refs, verbose=True, max_threads=MAX_THREADS_DEFAULT):
         output +="\n" +colorprint(OKGREEN, "%s working" % len(codes["200"]))
     for c in sorted(codes):
         if c != "200":
-            output +="\n" + colorprint(FAIL, "%s broken (reason: %s)" % (len(codes[c]), c))
+            output +="\n" + colorprint(FAIL, "{} broken (reason: {})".format(len(codes[c]), c))
             for ref in codes[c]:                
                 o = "  - %s" % ref.ref
                 if ref.page > 0:
@@ -131,11 +131,11 @@ def download_urls(
                     colorprint(FAIL, "Error downloading '%s' (%s)" %
                                      (url, status_code))
         except HTTPError as e:
-            colorprint(FAIL, "Error downloading '%s' (%s)" % (url, e.code))
+            colorprint(FAIL, "Error downloading '{}' ({})".format(url, e.code))
         except URLError as e:
-            colorprint(FAIL, "Error downloading '%s' (%s)" % (url, e.reason))
+            colorprint(FAIL, "Error downloading '{}' ({})".format(url, e.reason))
         except Exception as e:
-            colorprint(FAIL, "Error downloading '%s' (%s)" % (url, str(e)))
+            colorprint(FAIL, "Error downloading '{}' ({})".format(url, str(e)))
 
     # Create directory
     if not os.path.exists(output_directory):

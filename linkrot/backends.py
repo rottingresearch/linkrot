@@ -31,17 +31,16 @@ from pdfminer.layout import LAParams  # noqa: E402
 
 
 logger = logging.getLogger(__name__)
-unicode = str
 
 
 def make_compat_str(in_str):
     """
     Tries to guess encoding of [str/bytes] and
-    return a standard unicode string
+    return a string
     """
-    assert isinstance(in_str, (bytes, str, unicode))
+    assert isinstance(in_str, (bytes, str))
     if not in_str:
-        return unicode()
+        return ""
 
     # Chardet in Py3 works on bytes objects
     if not isinstance(in_str, bytes):
@@ -50,7 +49,7 @@ def make_compat_str(in_str):
     # Detect the encoding now
     enc = chardet.detect(in_str)
 
-    # Decode the object into a unicode object
+    # Decode the object into a string object
     try:
         out_str = in_str.decode(enc["encoding"])
     except UnicodeDecodeError as err:
@@ -59,12 +58,12 @@ def make_compat_str(in_str):
     # Cleanup
     if enc["encoding"] == "UTF-16BE":
         # Remove byte order marks (BOM)
-        if out_str.startswith("\ufeff"):
+        if out_str.startswith("\\ufeff"):
             out_str = out_str[1:]
     return out_str
 
 
-class Reference(object):
+class Reference:
     """ Generic Reference """
 
     ref = ""
@@ -104,10 +103,10 @@ class Reference(object):
         return self.ref == other.ref
 
     def __str__(self):
-        return "<%s: %s>" % (self.reftype, self.ref)
+        return "<{}: {}>".format(self.reftype, self.ref)
 
 
-class ReaderBackend(object):
+class ReaderBackend:
     """
     Base class of all Readers (eg. for PDF files, text, etc.)
 
@@ -128,14 +127,14 @@ class ReaderBackend(object):
 
     def metadata_key_cleanup(self, d, k):
         """ Recursively clean metadata dictionaries """
-        if isinstance(d[k], (str, unicode)):
+        if isinstance(d[k], str):
             d[k] = d[k].strip()
             if not d[k]:
                 del d[k]
         elif isinstance(d[k], (list, tuple)):
             new_list = []
             for item in d[k]:
-                if isinstance(item, (str, unicode)):
+                if isinstance(item, str):
                     if item.strip():
                         new_list.append(item.strip())
                 elif item:
@@ -158,14 +157,14 @@ class ReaderBackend(object):
     def get_references(self, reftype=None, sort=False):
         refs = self.references
         if reftype:
-            refs = set([ref for ref in refs if ref.reftype == "pdf"])
+            refs = {ref for ref in refs if ref.reftype == "pdf"}
         return sorted(refs) if sort else refs
 
     def get_references_as_dict(self, reftype=None, sort=False):
         ret = {}
         refs = self.references
         if reftype:
-            refs = set([ref for ref in refs if ref.reftype == "pdf"])
+            refs = {ref for ref in refs if ref.reftype == "pdf"}
         for r in sorted(refs) if sort else refs:
             if r.reftype in ret:
                 ret[r.reftype].append(r.ref)
@@ -190,7 +189,7 @@ class PDFMinerBackend(ReaderBackend):
             for k in doc.info[0]:
                 v = doc.info[0][k]
                 # print(repr(v), type(v))
-                if isinstance(v, (bytes, str, unicode)):
+                if isinstance(v, (bytes, str)):
                     self.metadata[k] = make_compat_str(v)
                 elif isinstance(v, (psparser.PSLiteral, psparser.PSKeyword)):
                     self.metadata[k] = make_compat_str(v.name)
@@ -280,7 +279,7 @@ class PDFMinerBackend(ReaderBackend):
         if isinstance(obj_resolved, bytes):
             obj_resolved = obj_resolved.decode("utf-8")
 
-        if isinstance(obj_resolved, (str, unicode)):
+        if isinstance(obj_resolved, str):
             ref = obj_resolved
             return Reference(ref, self.curpage)
 

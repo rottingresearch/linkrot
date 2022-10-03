@@ -71,7 +71,7 @@ def extract_arxiv(text):
     res = re.findall(ARXIV_REGEX, text, re.MULTILINE) + re.findall(
         ARXIV_REGEX2, text, re.MULTILINE
     )
-    return set([r.strip(".") for r in res])
+    return {r.strip(".") for r in res}
 
 
 def extract_doi(text):
@@ -85,7 +85,7 @@ def extract_doi(text):
     """
 
     res = set(re.findall(DOI_REGEX, text, re.MULTILINE))
-    return set([r.strip(".") for r in res])
+    return {r.strip(".") for r in res}
 
 
 if __name__ == "__main__":
