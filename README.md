@@ -8,7 +8,8 @@ Check out our sister project, [Rotting Research](https://github.com/marshalmille
 # Features
 
 - Extract references and metadata from a given PDF.  
-- Detects pdf, url, arxiv and doi references.  
+- Detects pdf, url, arxiv and doi references.
+- Archives valid links using Internet Archive's Wayback Machine.
 - Checks for valid SSL certificate.  
 - Find broken hyperlinks (using the -c flag).  
 - Output as text or JSON (using the -j flag).  
@@ -61,6 +62,7 @@ referenced PDFs.
     -j, --json            (Output infos as JSON (instead of plain text))  
     -v, --verbose         (Print all references (instead of only PDFs))  
     -t, --text            (Only extract text (no metadata or references))  
+    -a, --archive	  (Archive actvice links)
     -o OUTPUT_FILE,        --output-file OUTPUT_FILE (Output to specified file instead of console)  
     --version             (Show program's version number and exit)  
 
