@@ -1,12 +1,9 @@
 import os
 from linkrot import cli
-# import pytest
-
-curdir = os.path.dirname(os.path.realpath(__file__))
 
 
 def test_cli():
     parser = cli.create_parser()
-    parsed = parser.parse_args(['-j', 'pdfs/valid.pdf'])
+    parsed = parser.parse_args(["-j", "./tests/pdfs/valid.pdf"])
     assert parsed.json
-    assert parsed.pdf == "pdfs/valid.pdf"
+    assert parsed.pdf == "./tests/pdfs/valid.pdf"
