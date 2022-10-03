@@ -3,6 +3,8 @@
 
 Scans pdfs for links written in plaintext and checks if they are active or returns an error code. It then generates a report of its findings. Extract references (pdf, url, doi, arxiv) and metadata from a PDF.
 
+Check out our sister project, [Rotting Research](https://github.com/marshalmiller/rottingresearch), for a web app implementation of this project.
+
 # Features
 
 - Extract references and metadata from a given PDF.  
