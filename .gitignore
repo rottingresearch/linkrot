@@ -1,47 +1,12 @@
-
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@marshalmiller
-marshalmiller /
-linkrot-dev
-
-
-0
-0
-
-    96
-
-Code
-Issues 1
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-
-    Settings
-
-linkrot-dev/.gitignore
-@marshalmiller
-marshalmiller Update .gitignore
-Latest commit 63280e5 8 days ago
-History
-@marshalmiller
-62 lines (52 sloc) 733 Bytes
-#Mac
-.DS_Store
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-.*_cache
-
+*$py.class
+.idea/
 # C extensions
 *.so
+# pdf files
+*.pdf
 
 # Distribution / packaging
 .Python
@@ -57,10 +22,10 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-venv/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -80,7 +45,9 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
-*,cover
+*.cover
+.hypothesis/
+.pytest_cache/
 
 # Translations
 *.mo
@@ -88,6 +55,14 @@ coverage.xml
 
 # Django stuff:
 *.log
+local_settings.py
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
 
 # Sphinx documentation
 docs/_build/
@@ -95,18 +70,38 @@ docs/_build/
 # PyBuilder
 target/
 
-    © 2021 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Docs
+# Jupyter Notebook
+.ipynb_checkpoints
 
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
+# pyenv
+.python-version
 
-Loading complete
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+
+# IDE settings
+.vscode/
