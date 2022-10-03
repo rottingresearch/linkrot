@@ -14,7 +14,6 @@ import linkrot
 from linkrot.downloader import check_refs
 from linkrot.archive import archive_links
 
-parse_str = str
 
 # print(sys.version)
 # print("stdout encoding: %s" % sys.stdout.encoding)
@@ -126,14 +125,14 @@ def get_text_output(pdf, args):
     metadata.pop(None, None)
     for k, v in sorted(pdf.get_metadata().items()):
          if v:
-             ret += "- %s = %s\n" % (k, parse_str(v).strip("/"))
+             ret += "- {} = {}\n".format(k, str(v).strip("/"))
 
     # References
     ref_cnt = pdf.get_references_count()
     ret += "\nReferences: %s\n" % ref_cnt
     refs = pdf.get_references_as_dict()
     for k in refs:
-        ret += "- %s: %s\n" % (k.upper(), len(refs[k]))
+        ret += "- {}: {}\n".format(k.upper(), len(refs[k]))
 
         # doi references
         if k == 'url':
@@ -142,7 +141,7 @@ def get_text_output(pdf, args):
                 host = urlparse(u).hostname
                 if host and host.endswith(".doi.org"):
                     doi_ref.append(u)
-            ret += "- %s: %s\n" % ('DOI', len(doi_ref))
+            ret += "- {}: {}\n".format('DOI', len(doi_ref))
 
     if args.verbose == 0:
         if "pdf" in refs:

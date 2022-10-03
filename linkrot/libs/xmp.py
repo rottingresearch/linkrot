@@ -28,7 +28,7 @@ NS_MAP = {
 }
 
 
-class XmpParser(object):
+class XmpParser:
     """
         Parses an XMP string into a dictionary.
 
