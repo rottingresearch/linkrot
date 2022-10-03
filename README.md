@@ -62,6 +62,10 @@ referenced PDFs.
     -o OUTPUT_FILE,        --output-file OUTPUT_FILE (Output to specified file instead of console)  
     --version             (Show program's version number and exit)  
 
+### PDF Samples
+
+For testing purposes, you can find pdf samples on a [shared MEGA folder](https://mega.nz/folder/uwBxVSzS#lpBtSz49E9dqHtmrQwp0Ig).
+
 ### Examples
 
 #### Extract text to console
