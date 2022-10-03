@@ -31,7 +31,7 @@ License: GPLv3
 """
 
 __title__ = "linkrot"
-__version__ = "3.9.4"
+__version__ = "3.9.5"
 __author__ = "Marshal Miller"
 __license__ = "MIT"
 __copyright__ = "Copyright 2022 Marshal Miller"
