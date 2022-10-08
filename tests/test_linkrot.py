@@ -1,7 +1,6 @@
 import linkrot
 from linkrot.exceptions import FileNotFoundError, DownloadError, PDFInvalidError
 from linkrot import linkrot
-from fixtures import download_pdfs
 import pytest
 
 
