@@ -9,7 +9,7 @@ Check out our sister project, [Rotting Research](https://github.com/marshalmille
 
 - Extract references and metadata from a given PDF.  
 - Detects pdf, url, arxiv and doi references.
-- Archives valid links using Internet Archive's Wayback Machine.
+- Archives valid links using Internet Archive's Wayback Machine (using the -a flag).
 - Checks for valid SSL certificate.  
 - Find broken hyperlinks (using the -c flag).  
 - Output as text or JSON (using the -j flag).  
