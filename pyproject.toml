@@ -45,7 +45,7 @@ dev = [
     "mypy==0.991",
     "pylint==2.15.10",
     "pytest==7.2.0",
-    "build==0.9.0",
+    "build==0.10.0",
     "mega.py==1.0.8",
 ]
 test = [
