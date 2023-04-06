@@ -8,9 +8,9 @@ dynamic = ["version"]
 description = "Extract metadata and URLs from PDF files"
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 authors = [
-    { name = "Marshal Miller", email = "marshal@marshalmiller.com" },
+    { name = "Marshal Miller", email = "marshal@rottingresearch.org" },
 ]
 keywords = [
     "pdf",
@@ -54,7 +54,7 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/marshalmiller/linkrot"
+Homepage = "https://github.com/rottingresearch/linkrot"
 
 [tool.hatch.version]
 path = "linkrot/__init__.py"
