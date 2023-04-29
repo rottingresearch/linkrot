@@ -2,7 +2,7 @@ name: Ruff
 on: [ push, pull_request ]
 jobs:
   ruff:
-    runs-on: self-hosted
+    runs-on: [self-hosted]
     steps:
       - uses: actions/checkout@v3
       - uses: chartboost/ruff-action@v1
