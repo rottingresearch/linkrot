@@ -24,17 +24,17 @@ linkrot can be used to extract infos from PDF in two ways:
 >>> references_dict = pdf.get_references_as_dict()
 >>> pdf.download_pdfs("target-directory")
 
-https://github.com/marshalmiller/linkrot
+https://github.com/rottingresearch/linkrot
 
-Copyright (c) 2021, Marshal Miller <marshal@marshalmiller.com>
-License: GPLv3
+Copyright (c) 2023, Marshal Miller <marshal@rottingresearch.org>
+License: MIT (see LICENSE for details)
 """
 
 __title__ = "linkrot"
-__version__ = "3.9.6"
+__version__ = "3.9.7"
 __author__ = "Marshal Miller"
 __license__ = "MIT"
-__copyright__ = "Copyright 2022 Marshal Miller"
+__copyright__ = "Copyright 2023, Marshal Miller"
 
 import os
 import json
