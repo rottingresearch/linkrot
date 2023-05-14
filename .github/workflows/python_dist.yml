@@ -8,7 +8,7 @@ on:
 jobs:
   pypi-build-n-publish:
     name: linkrot
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     steps:
     - uses: actions/checkout@master
     - name: Set up Python 3.10
