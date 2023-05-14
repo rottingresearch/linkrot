@@ -1,8 +1,6 @@
 # Adds links to Wayback Machine from the Internet Archive
-import time
-from .threadpool import ThreadPool
-import re
 import requests
+from .threadpool import ThreadPool
 
 
 def archive_links(refs):
@@ -13,7 +11,7 @@ def archive_links(refs):
         if 'web.archive' in url:
             return url, url
         try:
-            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'}
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'}  # noqa: E501
             r = requests.get('https://web.archive.org/save/' +
                              url,  headers=headers)
             if r.status_code == 200:

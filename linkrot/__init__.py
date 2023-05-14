@@ -37,7 +37,6 @@ __license__ = "MIT"
 __copyright__ = "Copyright 2022 Marshal Miller"
 
 import os
-import sys
 import json
 import shutil
 import logging

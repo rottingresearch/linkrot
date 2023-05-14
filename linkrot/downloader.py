@@ -4,7 +4,6 @@ from .threadpool import ThreadPool
 from collections import defaultdict
 import ssl
 import os
-import sys
 import re
 
 
@@ -83,10 +82,10 @@ def check_refs(refs, verbose=True, max_threads=MAX_THREADS_DEFAULT):
     output = "\nSummary of link checker:" 
     print(output)
     if "200" in codes:
-        output +="\n" +colorprint(OKGREEN, "%s working" % len(codes["200"]))
+        output += "\n" + colorprint(OKGREEN, "%s working" % len(codes["200"]))
     for c in sorted(codes):
         if c != "200":
-            output +="\n" + colorprint(FAIL, "{} broken (reason: {})".format(len(codes[c]), c))
+            output += "\n" + colorprint(FAIL, "{} broken (reason: {})".format(len(codes[c]), c))  # noqa: E501
             for ref in codes[c]:                
                 o = "  - %s" % ref.ref
                 if ref.page > 0:

@@ -45,6 +45,7 @@ sd|se|sg|sh|si|sj|Ja|sk|sl|sm|sn|so|sr|ss|st|su|sv|sx|sy|sz|tc|td|tf|tg|th|tj|\
 tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|\
 ye|yt|yu|za|zm|zw)\b/?(?!@)))"""
 
+
 def extract_urls(text):
     """
     This function will return all the unique URLs found in the `text` argument.
@@ -54,6 +55,7 @@ def extract_urls(text):
      (no duplicates)
     """
     return set(re.findall(URL_REGEX, text, re.MULTILINE))
+
 
 def extract_arxiv(text):
     """

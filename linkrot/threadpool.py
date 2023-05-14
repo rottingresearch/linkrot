@@ -3,7 +3,6 @@ Inspired by http://stackoverflow.com/a/7257510
 """
 
 from threading import Thread
-import sys
 
 from queue import Queue
 

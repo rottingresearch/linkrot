@@ -39,7 +39,7 @@ class XmpParser:
     """
 
     def __init__(self, xmp):
-        self.tree = ET.XML(xmp, parser=etree.XMLParser(recover=True,encoding='utf-8'))
+        self.tree = ET.XML(xmp, parser=etree.XMLParser(recover=True, encoding='utf-8'))
         self.rdftree = self.tree.find(RDF_NS + "RDF")
 
     @property

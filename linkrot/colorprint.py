@@ -15,6 +15,7 @@ REVERSE = "\033[7m"
 # Nothing (Standard)
 ENDC = "\033[0m"
 
+
 def colorprint(color, s):
     '''Formates the string 's' with the ANSI octal escape sequence(s) 'color'
        and then makes sure that all the following print statements are of the of standard formatting.
@@ -26,7 +27,7 @@ def colorprint(color, s):
     Returns:
         None  
 
-    '''
+    '''  # noqa: E501
     output = "{}{}{}".format(color, s, ENDC)
     print(output)
     return output

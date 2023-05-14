@@ -2,7 +2,6 @@
 PDF Backend: pdfMiner
 """
 
-import sys
 import logging
 from io import BytesIO
 from re import compile
@@ -52,7 +51,7 @@ def make_compat_str(in_str):
     # Decode the object into a string object
     try:
         out_str = in_str.decode(enc["encoding"])
-    except UnicodeDecodeError as err:
+    except UnicodeDecodeError as err:  # noqa: F841
         out_str = ""
 
     # Cleanup

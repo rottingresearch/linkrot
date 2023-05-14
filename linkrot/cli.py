@@ -95,7 +95,7 @@ def create_parser():
         action="store_true",
         help="Only extract text (no metadata or references)",
     )
-    
+
     parser.add_argument(
         "-a",
         "--archive",
@@ -124,8 +124,8 @@ def get_text_output(pdf, args):
     metadata = pdf.get_metadata()
     metadata.pop(None, None)
     for k, v in sorted(pdf.get_metadata().items()):
-         if v:
-             ret += "- {} = {}\n".format(k, str(v).strip("/"))
+        if v:
+            ret += "- {} = {}\n".format(k, str(v).strip("/"))
 
     # References
     ref_cnt = pdf.get_references_count()
@@ -236,8 +236,8 @@ def main():
         refs = [ref for ref in refs_all if ref.reftype in ["url", "pdf"]]
         print("\nChecking %s URLs for broken links..." % len(refs))
         check_refs(refs)
-    
-    # Archive active links 
+
+    # Archive active links
     if args.archive:
         refs_all = pdf.get_references()
         refs = [ref for ref in refs_all if ref.reftype in ["url"]]
