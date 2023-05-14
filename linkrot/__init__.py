@@ -31,7 +31,7 @@ License: MIT (see LICENSE for details)
 """
 
 __title__ = "linkrot"
-__version__ = "3.9.8"
+__version__ = "3.9.9"
 __author__ = "Marshal Miller"
 __license__ = "MIT"
 __copyright__ = "Copyright 2023, Marshal Miller"
