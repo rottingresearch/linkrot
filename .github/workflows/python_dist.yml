@@ -6,7 +6,7 @@ on:
 
 
 jobs:
-  build-n-publish:
+  pypi-build-n-publish:
     name: linkrot
     runs-on: ubuntu-latest
     steps:
