@@ -1,5 +1,3 @@
-import pytest
-
 from linkrot.downloader import sanitize_url
 
 
