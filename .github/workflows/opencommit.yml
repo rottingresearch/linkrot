@@ -21,7 +21,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WILDCARD_GITHUB_TOKEN }}
 
         env:
-          OCO_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OCO_OPENAI_API_KEY: ${{ secrets.OCO_OPENAI_API_KEY }}
 
           # customization
           OCO_OPENAI_MAX_TOKENS: 500
