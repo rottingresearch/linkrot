@@ -1,7 +1,7 @@
 ![linkrot logo](https://github.com/marshalmiller/linkrot/blob/6e6fb45239f8d06e89671e2ec68a11629747355d/branding/Asset%207@4x.png)
 # Introduction
 
-Scans pdfs for links written in plaintext and checks if they are active or returns an error code. It then generates a report of its findings. Extract references (pdf, url, doi, arxiv) and metadata from a PDF.
+Scans PDFs for links written in plaintext and checks if they are active or returns an error code. It then generates a report of its findings. Extract references (PDF, URL, DOI, arXiv) and metadata from a PDF.
 
 Check out our sister project, [Rotting Research](https://github.com/marshalmiller/rottingresearch), for a web app implementation of this project.
 
@@ -174,7 +174,7 @@ Information Provided: All references in their corresponding type list.
 ### download_pdfs(target_dir)
 Arguments: 
 
-	target_dir: The path of the directory to which the reference pdfs should be downloaded 
+	target_dir: The path of the directory to which the reference PDFs should be downloaded 
 	
 Usage: 
 ```python
@@ -183,7 +183,7 @@ pdf.download_pdfs("target-directory") #pdf is the instance of the linkrot class
 
 Return type: None
 
-Information Provided: Downloads all the reference pdfs to specified directory.
+Information Provided: Downloads all the reference PDFs to the specified directory.
 
 ## 3. Linkrot downloader functions
 
@@ -217,7 +217,7 @@ status_code = get_status_code(url)
 
 Return type: String `<class 'str'>`
 
-Information Provided: Checks if the url is active or broken.
+Information Provided: Checks if the URL is active or broken.
 
 ### check_refs(refs, verbose=True, max_threads=MAX_THREADS_DEFAULT)
 Arguments: 
@@ -264,7 +264,7 @@ Information Provided: All URLs in the text
 ### extract_arxiv(text)
 Arguments: 
 
-	text: String of text to extract arxivs from
+	text: String of text to extract arXivs from
 	
 Usage: 
 ```python
@@ -273,21 +273,21 @@ arxiv = extract_arxiv(text)
 
 Return type: Set `<class 'set'>` of arxivs
 
-Information Provided: All arxivs in the text
+Information Provided: All arXivs in the text
 
 ### extract_doi(text)
 Arguments: 
 
-	text: String of text to extract dois from
+	text: String of text to extract DOIs from
 	
 Usage: 
 ```python
 doi = extract_doi(text)
 ```
 
-Return type: Set `<class 'set'>` of dois
+Return type: Set `<class 'set'>` of DOIs
 
-Information Provided: All dois in the text
+Information Provided: All DOIs in the text
 
 # Code of Conduct
 To view our code of conduct please visit our [Code of Conduct page](https://github.com/marshalmiller/rottingresearch/blob/main/code_of_conduct.md).
