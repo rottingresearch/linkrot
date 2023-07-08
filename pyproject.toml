@@ -33,7 +33,7 @@ classifiers = [
 dependencies = [
     "pdfminer.six==20221105",
     "chardet==5.1.0",
-    "lxml==4.9.2",
+    "lxml==4.9.3",
 ]
 
 [project.optional-dependencies]
