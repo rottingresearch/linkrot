@@ -233,7 +233,7 @@ check_refs(pdf.get_references()) #pdf is the instance of the linkrot class
 
 Return type: None
 
-Information Provided: Prints references with their status code and a summary of all the broken/active links on terminal.
+Information Provided: Prints references with their status code and a summary of all the broken/active links on the terminal.
 
 ## 4. Linkrot extractor functions
 
@@ -250,7 +250,7 @@ text = pdf.get_text() #pdf is the instance of the linkrot class
 ### extract_urls(text)
 Arguments: 
 
-	text: String of text to extract urls from
+	text: String of text to extract URLs from
 	
 Usage: 
 ```python
@@ -264,28 +264,28 @@ Information Provided: All URLs in the text
 ### extract_arxiv(text)
 Arguments: 
 
-	text: String of text to extract arxivs from
+	text: String of text to extract arXivs from
 	
 Usage: 
 ```python
 arxiv = extract_arxiv(text)
 ```
 
-Return type: Set `<class 'set'>` of arxivs
+Return type: Set `<class 'set'>` of arXivs
 
 Information Provided: All arxivs in the text
 
 ### extract_doi(text)
 Arguments: 
 
-	text: String of text to extract dois from
+	text: String of text to extract DOIs from
 	
 Usage: 
 ```python
 doi = extract_doi(text)
 ```
 
-Return type: Set `<class 'set'>` of dois
+Return type: Set `<class 'set'>` of DOIs
 
 Information Provided: All dois in the text
 
