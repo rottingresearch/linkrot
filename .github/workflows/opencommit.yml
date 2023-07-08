@@ -16,6 +16,9 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Set OpenAI Key
+        run: oc config set OCO_OPENAI_API_KEY=${{ secrets.OCO_OPENAI_API_KEY }}
+        
       - uses: di-sukharev/opencommit@github-action-v1.0.4
         with:
           GITHUB_TOKEN: ${{ secrets.WILDCARD_GITHUB_TOKEN }}
