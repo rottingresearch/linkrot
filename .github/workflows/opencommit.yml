@@ -19,7 +19,6 @@ jobs:
       - uses: di-sukharev/opencommit@github-action-v1.0.4
         with:
           GITHUB_TOKEN: ${{ secrets.WILDCARD_GITHUB_TOKEN }}
-
         env:
           OCO_OPENAI_API_KEY: ${{ secrets.OCO_OPENAI_API_KEY }}
 
