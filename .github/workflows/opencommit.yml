@@ -15,20 +15,17 @@ jobs:
           node-version: '16'
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-      - name: Set OpenAI Key
-        run: oc config set OCO_OPENAI_API_KEY=${{ secrets.OCO_OPENAI_API_KEY }}
-        
+          fetch-depth: 0  
       - uses: di-sukharev/opencommit@github-action-v1.0.4
         with:
           GITHUB_TOKEN: ${{ secrets.WILDCARD_GITHUB_TOKEN }}
-        env:
-          OCO_OPENAI_API_KEY: ${{ secrets.OCO_OPENAI_API_KEY }}
+        
+        run: oc config set OCO_OPENAI_API_KEY=${{ secrets.OCO_OPENAI_API_KEY }}
 
           # customization
-          OCO_OPENAI_MAX_TOKENS: 500
-          OCO_OPENAI_BASE_PATH: ''
-          OCO_DESCRIPTION: false
-          OCO_EMOJI: false
-          OCO_MODEL: gpt-3.5-turbo
-          OCO_LANGUAGE: en
+        OCO_OPENAI_MAX_TOKENS: 500
+        OCO_OPENAI_BASE_PATH: ''
+        OCO_DESCRIPTION: false
+        OCO_EMOJI: false
+        OCO_MODEL: gpt-3.5-turbo
+        OCO_LANGUAGE: en
