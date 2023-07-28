@@ -1,12 +1,4 @@
 #!/usr/bin/python
-"""
-Regexes for reference matching
-
-Web url matching:
-* http://daringfireball.net/2010/07/improved_regex_for_matching_urls
-* https://gist.github.com/gruber/8891611
-"""
-
 import re
 
 # arXiv.org
