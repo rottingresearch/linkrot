@@ -1,4 +1,3 @@
-from io import BytesIO
 from unittest.mock import patch
 
 from linkrot import backends
