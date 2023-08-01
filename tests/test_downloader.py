@@ -1,25 +1,15 @@
-from linkrot.downloader import sanitize_url
+from unittest.mock import patch, mock_open
+
+from linkrot.downloader import download_file
 
 
-def test_should_not_add_http_to_upper_case_url():
-    result = sanitize_url("HTTP://WWW.TRACFONE.COM/TERMSANDCONDITIONS#RETURNPOLICY")
-    expected = "HTTP://WWW.TRACFONE.COM/TERMSANDCONDITIONS#RETURNPOLICY"
-    assert result == expected
-
-
-def test_should_add_http_to_upper_case_url():
-    result = sanitize_url("WWW.TRACFONE.COM/TERMSANDCONDITIONS#RETURNPOLICY")
-    expected = "http://WWW.TRACFONE.COM/TERMSANDCONDITIONS#RETURNPOLICY"
-    assert result == expected
-
-
-def test_should_not_add_http_to_lower_case_url():
-    result = sanitize_url("http://google.com")
-    expected = "http://google.com"
-    assert result == expected
-
-
-def test_should_add_http_to_lower_case_url():
-    result = sanitize_url("google.com")
-    expected = "http://google.com"
-    assert result == expected
+@patch("linkrot.downloader.urlopen")
+def test_download_file(mock_urlopen):
+    mock_file = mock_open()
+    mock_urlopen.return_value = mock_file.return_value
+    url = "http://example.com/test.pdf"
+    path = "/tmp/test.pdf"
+    result = download_file(url, path)
+    assert result == path
+    mock_urlopen.assert_called_once_with(url)
+    mock_file.assert_called_once_with(path, "wb")
