@@ -45,3 +45,7 @@ jobs:
     - name: mypy
       continue-on-error: true
       run: mypy linkrot
+
+    - name: Unit tests
+      run: pytest
+
