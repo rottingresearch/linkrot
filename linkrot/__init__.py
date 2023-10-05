@@ -31,9 +31,9 @@ License: MIT (see LICENSE for details)
 """
 
 __title__ = "linkrot"
-__version__ = "4.0.2"
+__version__ = "4.0.3"
 __author__ = "Marshal Miller"
-__license__ = "GPLv3"
+__license__ = "GNU General Public License v3 (GPLv3)"
 __copyright__ = "Copyright 2023, Marshal Miller"
 
 import os
