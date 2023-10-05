@@ -19,7 +19,6 @@ keywords = [
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
-    "License :: OSI Approved :: GPL-3.0-or-later",
     "Environment :: Console",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
