@@ -12,7 +12,7 @@ Features
 
 Usage
 
-linkrot can be used to extract infos from PDF in two ways:
+linkrot can be used to extract info from PDF in two ways:
 
 * Command line tool `linkrot`
 * Python library `import linkrot`
@@ -31,9 +31,9 @@ License: MIT (see LICENSE for details)
 """
 
 __title__ = "linkrot"
-__version__ = "4.0"
+__version__ = "4.0.1"
 __author__ = "Marshal Miller"
-__license__ = "MIT"
+__license__ = "GPLv3"
 __copyright__ = "Copyright 2023, Marshal Miller"
 
 import os
