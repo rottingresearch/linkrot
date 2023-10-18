@@ -42,7 +42,7 @@ dev = [
     "coverage==7.3.2",
     "flake8==6.1.0",
     "mccabe<=0.7.0",
-    "mypy==1.6.0",
+    "mypy==1.6.1",
     "pylint==3.0.1",
     "pytest==7.4.2",
     "build==1.0.3",
