@@ -9,4 +9,5 @@ def test_worker():
     tasks.put(lambda: print("Hello, world!"))
     tasks.put(lambda: print("Goodbye, world!"))
     tasks.join()
-    assert not tasks.unfinished_tasks    return
+    assert not tasks.unfinished_tasks
+    return

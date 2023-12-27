@@ -26,7 +26,7 @@ linkrot can be used to extract info from PDF in two ways:
 
 https://github.com/rottingresearch/linkrot
 
-Copyright (c) 2023, Marshal Miller <marshal@rottingresearch.org>
+Copyright (c) 2024, Marshal Miller <marshal@rottingresearch.org>
 License: GPLv3 (see LICENSE for details)
 """
 
@@ -34,7 +34,7 @@ __title__ = "linkrot"
 __version__ = "4.1"
 __author__ = "Marshal Miller"
 __license__ = "GPL-3.0-or-later"
-__copyright__ = "Copyright 2023, Marshal Miller"
+__copyright__ = "Copyright 2024, Marshal Miller"
 
 import os
 import json
@@ -49,6 +49,7 @@ from .exceptions import FileNotFoundError, DownloadError, PDFInvalidError
 from pdfminer.pdfparser import PDFSyntaxError
 from io import BytesIO
 from urllib.request import Request, urlopen
+from typing import Dict, Any
 
 logger = logging.getLogger(__name__)
 
@@ -77,7 +78,7 @@ class linkrot:
 
     stream = None  # ByteIO Stream
     reader = None  # ReaderBackend
-    summary = {}
+    summary: Dict[str, Any] = {}
 
     def __init__(self, uri):
         """

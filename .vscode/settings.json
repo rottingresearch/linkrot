@@ -3,7 +3,8 @@
     "python.testing.pytestArgs": [
         "."
     ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true,
-    "codeQL.createQuery.qlPackLocation": "/Users/marshal/Documents/GitHub/linkrot"
+    "python.testing.unittestEnabled": true,
+    "python.testing.pytestEnabled": false,
+    "codeQL.createQuery.qlPackLocation": "/Users/marshal/Documents/GitHub/linkrot",
+    "testExplorer.useNativeTesting": false
 }
