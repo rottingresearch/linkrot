@@ -25,7 +25,7 @@ def colorprint(color, s):
         s: The string to be formatted.
 
     Returns:
-        None  
+        None
 
     '''  # noqa: E501
     output = "{}{}{}".format(color, s, ENDC)

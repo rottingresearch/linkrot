@@ -79,14 +79,14 @@ def check_refs(refs, verbose=True, max_threads=MAX_THREADS_DEFAULT):
         pass
 
     # Print summary
-    output = "\nSummary of link checker:" 
+    output = "\nSummary of link checker:"
     print(output)
     if "200" in codes:
         output += "\n" + colorprint(OKGREEN, "%s working" % len(codes["200"]))
     for c in sorted(codes):
         if c != "200":
             output += "\n" + colorprint(FAIL, "{} broken (reason: {})".format(len(codes[c]), c))  # noqa: E501
-            for ref in codes[c]:                
+            for ref in codes[c]:
                 o = "  - %s" % ref.ref
                 if ref.page > 0:
                     o += " (page %s)" % ref.page
@@ -132,7 +132,8 @@ def download_urls(
         except HTTPError as e:
             colorprint(FAIL, "Error downloading '{}' ({})".format(url, e.code))
         except URLError as e:
-            colorprint(FAIL, "Error downloading '{}' ({})".format(url, e.reason))
+            error_message = "Error downloading '{}' ({})".format(url, e.reason)
+            colorprint(FAIL, error_message)
         except Exception as e:
             colorprint(FAIL, "Error downloading '{}' ({})".format(url, str(e)))
 

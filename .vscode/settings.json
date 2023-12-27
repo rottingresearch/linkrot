@@ -4,5 +4,6 @@
         "."
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "codeQL.createQuery.qlPackLocation": "/Users/marshal/Documents/GitHub/linkrot"
 }
