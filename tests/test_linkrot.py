@@ -1,3 +1,4 @@
+from typing import Literal
 import linkrot
 from linkrot.exceptions import FileNotFoundError, DownloadError, PDFInvalidError
 import pytest
@@ -11,7 +12,7 @@ import pytest
         ("./tests/pdfs/invalid.pdf", PDFInvalidError),
     ],
 )
-def test_linkrot_exceptions(download_pdfs, test_case, expected):
+def test_linkrot_exceptions(download_pdfs, test_case: Literal['asd', 'http://invalid.com/404.pdf', './tests/pdfs/invalid.pdf'], expected: type[FileNotFoundError] | type[DownloadError] | type[PDFInvalidError]):
     with pytest.raises(expected):
         linkrot(test_case)
 
