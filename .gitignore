@@ -5,8 +5,6 @@ __pycache__/
 .idea/
 # C extensions
 *.so
-# pdf files
-*.pdf
 
 # Distribution / packaging
 .Python
