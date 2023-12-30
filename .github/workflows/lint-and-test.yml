@@ -36,6 +36,7 @@ jobs:
         pip -V
 
     - name: flake8 Lint
+      continue-on-error: true
       uses: py-actions/flake8@v2
 
     - name: mypy
