@@ -9,4 +9,7 @@ def test_pdfminer_backend():
         mock_get.return_value.content = pdf_data
         result = backends.pdfminer_backend("http://example.com/test.pdf")
         assert result == "Hello, world!"
-        mock_get.assert_called_once_with("http://example.com/test.pdf", stream=True)
+        mock_get.assert_called_once_with(
+            "http://example.com/test.pdf",
+            stream=True
+        )

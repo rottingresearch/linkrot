@@ -8,14 +8,14 @@ Check out our sister project, [Rotting Research](https://github.com/marshalmille
 # Features
 
 - Extract references and metadata from a given PDF.  
-- Detects pdf, url, arxiv and doi references.
+- Detects PDF, URL, arXiv and DOI references.
 - Archives valid links using Internet Archive's Wayback Machine (using the -a flag).
 - Checks for valid SSL certificate.  
 - Find broken hyperlinks (using the -c flag).  
 - Output as text or JSON (using the -j flag).  
 - Extract the PDF text (using the --text flag).  
 - Use as command-line tool or Python package.  
-- Works with local and online pdfs.  
+- Works with local and online PDFs.  
 
 # Installation
 
@@ -68,11 +68,11 @@ referenced PDFs.
 
 ### PDF Samples
 
-For testing purposes, you can find pdf samples on a [shared MEGA folder](https://mega.nz/folder/uwBxVSzS#lpBtSz49E9dqHtmrQwp0Ig).
+For testing purposes, you can find PDF samples in [shared MEGA](https://mega.nz/folder/uwBxVSzS#lpBtSz49E9dqHtmrQwp0Ig) folder](https://mega.nz/folder/uwBxVSzS#lpBtSz49E9dqHtmrQwp0Ig).
 
 ### Examples
 
-#### Extract text to console
+#### Extract text to console.
 ```bash
 linkrot https://example.com/example.pdf -t
 ```
@@ -293,4 +293,4 @@ Information Provided: All DOIs in the text
 To view our code of conduct please visit our [Code of Conduct page](https://github.com/marshalmiller/rottingresearch/blob/main/code_of_conduct.md).
             
 # License
-This program is licensed with an [MIT License](https://github.com/marshalmiller/linkrot/blob/main/LICENSE).
+This program is licensed with an [GPLv3 License](https://github.com/marshalmiller/linkrot/blob/main/LICENSE).

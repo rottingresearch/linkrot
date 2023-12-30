@@ -7,7 +7,8 @@ import os
 import re
 
 
-from urllib.request import Request, urlopen, HTTPError, URLError
+from urllib.request import Request, urlopen, HTTPError
+from urllib.error import URLError
 
 unicode = str
 
@@ -19,7 +20,7 @@ if hasattr(ssl, "_create_unverified_context"):
     ssl_unverified_context = ssl._create_unverified_context()
 else:
     # Not existing in Python 2.6
-    ssl_unverified_context = None
+    ssl_unverified_context = ssl.SSLContext()
 
 
 def sanitize_url(url):
