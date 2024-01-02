@@ -31,7 +31,7 @@ classifiers = [
     "Topic :: Utilities",
 ]
 dependencies = [
-    "pdfminer.six==20231228",
+    "PyMuPDF==1.23.8",
     "chardet==5.2.0",
     "lxml==5.0.0",
 ]
