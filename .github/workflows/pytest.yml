@@ -23,7 +23,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
-      run: pip install pytest pytest-md pytest-emoji chardet lxml pdfminer.six
+      run: pip install pytest pytest-md pytest-emoji chardet lxml pdfminer.six requests
     - uses: actions/checkout@v3
     - name: Run pytest
       uses: pavelzw/pytest-action@v2
