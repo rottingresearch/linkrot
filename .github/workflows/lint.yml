@@ -1,4 +1,4 @@
-name: Lint and Test
+name: Lint
 
 on: [push, pull_request]
 
@@ -42,7 +42,3 @@ jobs:
     - name: mypy
       continue-on-error: true
       run: mypy linkrot
-
-    - name: Unit tests
-      run: pytest
-

@@ -1,10 +1,15 @@
 {
     "python.pythonPath": "/usr/bin/python3",
     "python.testing.pytestArgs": [
-        "."
+        "tests"
     ],
-    "python.testing.unittestEnabled": true,
-    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
     "codeQL.createQuery.qlPackLocation": "/Users/marshal/Documents/GitHub/linkrot",
-    "testExplorer.useNativeTesting": false
+    "testExplorer.useNativeTesting": false,
+    "testExplorer.addToEditorContextMenu": true,
+    "testExplorer.onReload": "reset",
+    "testExplorer.onStart": "reset",
+    "testExplorer.showOnRun": true,
+    "testExplorer.sort": "byLabel"
 }
