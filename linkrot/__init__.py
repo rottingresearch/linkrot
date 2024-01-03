@@ -31,7 +31,7 @@ License: GPLv3 (see LICENSE for details)
 """
 
 __title__ = "linkrot"
-__version__ = "4.2"
+__version__ = "5.0"
 __author__ = "Marshal Miller"
 __license__ = "GPL-3.0-or-later"
 __copyright__ = "Copyright 2024, Marshal Miller"
@@ -43,10 +43,9 @@ import logging
 
 
 from .extractor import extract_urls
-from .backends import PDFMinerBackend, TextBackend
+from .backends import PyMuPDFBackend
 from .downloader import download_urls
 from .exceptions import FileNotFoundError, DownloadError, PDFInvalidError
-from pdfminer.pdfparser import PDFSyntaxError
 from io import BytesIO
 from urllib.request import Request, urlopen
 from typing import Dict, Any
@@ -113,16 +112,8 @@ class linkrot:
 
         # Create ReaderBackend instance
         try:
-            self.reader = PDFMinerBackend(self.stream)
-        except PDFSyntaxError as e:
-            raise PDFInvalidError("Invalid PDF ({})".format(str(e)))
-
+            self.reader = PyMuPDFBackend(self.stream)
             # Could try to create a TextReader
-            logger.info(str(e))
-            logger.info("Trying to create a TextReader backend...")
-            self.stream.seek(0)
-            self.reader = TextBackend(self.stream)
-            self.is_pdf = False
         except Exception as e:
             raise PDFInvalidError("Invalid PDF ({})".format(str(e)))
 

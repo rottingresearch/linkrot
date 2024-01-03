@@ -1,9 +1,8 @@
 """
-PDF Backend: pdfMiner
+PDF Backend: PyMuPDF
 """
 
 import logging
-from io import BytesIO
 from re import compile
 
 # Character Detection Helper
@@ -11,23 +10,9 @@ import chardet
 
 # Find URLs in text via regex
 from . import extractor
-from .libs.xmp import xmp_to_dict
 
-# Setting `psparser.STRICT` is the first thing to do because it is
-# referenced in the other pdfparser modules
-from pdfminer import settings as pdfminer_settings
-
-pdfminer_settings.STRICT = False
-from pdfminer import psparser  # noqa: E402
-from pdfminer.pdfdocument import PDFDocument  # noqa: E402
-from pdfminer.pdfparser import PDFParser  # noqa: E402
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter\
-  # noqa: E402
-from pdfminer.pdfpage import PDFPage  # noqa: E402
-from pdfminer.pdftypes import resolve1, PDFObjRef  # noqa: E402
-from pdfminer.converter import TextConverter  # noqa: E402
-from pdfminer.layout import LAParams  # noqa: E402
-
+# import PyMuPDF
+import fitz
 
 logger = logging.getLogger(__name__)
 
@@ -172,7 +157,7 @@ class ReaderBackend:
         return ret
 
 
-class PDFMinerBackend(ReaderBackend):
+class PyMuPDFBackend(ReaderBackend):
     def __init__(self, pdf_stream, password="", pagenos=None, maxpages=0):
         # noqa: C901
         if pagenos is None:
@@ -182,60 +167,40 @@ class PDFMinerBackend(ReaderBackend):
         self.pdf_stream = pdf_stream
 
         # Extract Metadata
-        parser = PDFParser(pdf_stream)
-        doc = PDFDocument(parser, password=password, caching=True)
-        if doc.info:
-            for k in doc.info[0]:
-                v = doc.info[0][k]
+        doc = fitz.open(pdf_stream)
+        if doc.metadata:
+            for k in doc.metadata:
+                v = doc.metadata[k]
                 # print(repr(v), type(v))
                 if isinstance(v, (bytes, str)):
                     self.metadata[k] = make_compat_str(v)
-                elif isinstance(v, (psparser.PSLiteral, psparser.PSKeyword)):
-                    self.metadata[k] = make_compat_str(v.name)
-
-        # Secret Metadata
-        if "Metadata" in doc.catalog:
-            metadata = resolve1(doc.catalog["Metadata"]).get_data()
-            # print(metadata)  # The raw XMP metadata
-            # print(xmp_to_dict(metadata))
-            self.metadata.update(xmp_to_dict(metadata))
-            # print("---")
 
         # Extract Content
-        text_io = BytesIO()
-        rsrcmgr = PDFResourceManager(caching=True)
-        converter = TextConverter(
-            rsrcmgr, text_io, codec="utf-8", laparams=LAParams(),
-            imagewriter=None
-        )
-        interpreter = PDFPageInterpreter(rsrcmgr, converter)
-
+        content = ""
         self.metadata["Pages"] = 0
         self.curpage = 0
-        for page in PDFPage.get_pages(
-            self.pdf_stream,
-            pagenos=pagenos,
-            maxpages=maxpages,
-            password=password,
-            caching=True,
-            check_extractable=False,
-        ):
+        foundLinks = []
+        for page in doc:
             # Read page contents
-            interpreter.process_page(page)
+            content += page.get_text() + '\x0c'
             self.metadata["Pages"] += 1
             self.curpage += 1
+            link = page.first_link
 
             # Collect URL annotations
             # try:
-            if page.annots:
-                refs = self.resolve_PDFObjRef(page.annots)
-                if refs:
-                    if isinstance(refs, list):
-                        for ref in refs:
-                            if ref:
-                                self.references.add(ref)
-                    elif isinstance(refs, Reference):
-                        self.references.add(refs)
+            while link:
+                if link.is_external:
+                    refs = self.resolve_PDFObjRef(link.uri)
+                    foundLinks.append(link.uri)
+                    if refs:
+                        if isinstance(refs, list):
+                            for ref in refs:
+                                if ref:
+                                    self.references.add(ref)
+                        elif isinstance(refs, Reference):
+                            self.references.add(refs)
+                link = link.next
 
             # except Exception as e:
             # logger.warning(str(e))
@@ -244,15 +209,16 @@ class PDFMinerBackend(ReaderBackend):
         self.metadata_cleanup()
 
         # Get text from stream
-        self.text = text_io.getvalue().decode("utf-8")
-        text_io.close()
-        converter.close()
+        self.text = content
         # print(self.text)
 
         # Extract URL references from text
         for pageno, page in enumerate(self.text.split('\x0c'), 1):
             for url in extractor.extract_urls(page):
+                if any(url in ref for ref in foundLinks):
+                    continue
                 self.references.add(Reference(url, pageno))
+                foundLinks.append(url)
 
             for ref in extractor.extract_arxiv(page):
                 self.references.add(Reference(ref, pageno))
@@ -268,49 +234,10 @@ class PDFMinerBackend(ReaderBackend):
         if isinstance(obj_ref, list):
             return [self.resolve_PDFObjRef(item) for item in obj_ref]
 
-        # print(">", obj_ref, type(obj_ref))
-        if not isinstance(obj_ref, PDFObjRef):
-            # print("type not of PDFObjRef")
-            return None
+        if isinstance(obj_ref, bytes):
+            obj_ref = obj_ref.decode("utf-8")
 
-        obj_resolved = obj_ref.resolve()
-        # print("obj_resolved:", obj_resolved, type(obj_resolved))
-        if isinstance(obj_resolved, bytes):
-            obj_resolved = obj_resolved.decode("utf-8")
-
-        if isinstance(obj_resolved, str):
-            ref = obj_resolved
-            return Reference(ref, self.curpage)
-
-        if isinstance(obj_resolved, list):
-            return [self.resolve_PDFObjRef(o) for o in obj_resolved]
-
-        if "URI" in obj_resolved:
-            if isinstance(obj_resolved["URI"], PDFObjRef):
-                return self.resolve_PDFObjRef(obj_resolved["URI"])
-
-        if "A" in obj_resolved:
-            if isinstance(obj_resolved["A"], PDFObjRef):
-                return self.resolve_PDFObjRef(obj_resolved["A"])
-
-            if "URI" in obj_resolved["A"]:
-                decoded_ref = obj_resolved["A"]["URI"].decode("utf-8")
-                # exclude email addresses
-                if not decoded_ref.startswith("mailto:"):
-                    return Reference(decoded_ref, self.curpage)
-
-
-class TextBackend(ReaderBackend):
-    def __init__(self, stream):
-        ReaderBackend.__init__(self)
-        self.text = stream.read()
-
-        # Extract URL references from text
-        for url in extractor.extract_urls(self.text):
-            self.references.add(Reference(url))
-
-        for ref in extractor.extract_arxiv(self.text):
-            self.references.add(Reference(ref))
-
-        for ref in extractor.extract_doi(self.text):
-            self.references.add(Reference(ref))
+        if not obj_ref.startswith("mailto:"):
+            if isinstance(obj_ref, str):
+                ref = obj_ref
+                return Reference(ref, self.curpage)
