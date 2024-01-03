@@ -233,7 +233,7 @@ class PyMuPDFBackend(ReaderBackend):
         """
         if isinstance(obj_ref, list):
             return [self.resolve_PDFObjRef(item) for item in obj_ref]
-        
+
         if isinstance(obj_ref, bytes):
             obj_ref = obj_ref.decode("utf-8")
 
