@@ -44,7 +44,6 @@ dev = [
     "mccabe<=0.7.0",
     "mypy==1.8.0",
     "pylint==3.0.3",
-    "chardet==5.2.0",
     "pytest==7.4.4",
     "build==1.0.3",
     "mega.py==1.0.8",
@@ -52,7 +51,6 @@ dev = [
 test = [
     "pytest==7.4.4",
     "mega.py==1.0.8",
-    "chardet==5.2.0",
 ]
 
 [project.urls]
