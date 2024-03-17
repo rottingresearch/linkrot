@@ -39,10 +39,10 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "black==24.2.0",
-    "coverage==7.4.3",
+    "coverage==7.4.4",
     "flake8==7.0.0",
     "mccabe<=0.7.0",
-    "mypy==1.8.0",
+    "mypy==1.9.0",
     "pylint==3.1.0",
     "pytest==8.1.1",
     "build==1.1.1",
