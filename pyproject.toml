@@ -33,7 +33,7 @@ classifiers = [
 dependencies = [
     "PyMuPDF==1.24.0",
     "chardet==5.2.0",
-    "lxml==5.1.0",
+    "lxml==5.2.0",
 ]
 
 [project.optional-dependencies]
