@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\linkrot"
+    "\\linkrot",
+    "\\tests"
   ],
-  "SelectedNode": "\\linkrot\\__init__.py",
+  "SelectedNode": "\\tests\\test_archive.py",
   "PreviewInSolutionExplorer": false
 }
