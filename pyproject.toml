@@ -43,7 +43,7 @@ dev = [
     "flake8==7.0.0",
     "mccabe<=0.7.0",
     "mypy==1.10.0",
-    "pylint==3.1.1",
+    "pylint==3.2.0",
     "pytest==8.2.0",
     "build==1.2.1",
     "mega.py==1.0.8",
