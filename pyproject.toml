@@ -40,7 +40,7 @@ dependencies = [
 dev = [
     "black==24.4.2",
     "coverage==7.5.3",
-    "flake8==7.0.0",
+    "flake8==7.1.0",
     "mccabe<=0.7.0",
     "mypy==1.10.0",
     "pylint==3.2.2",
