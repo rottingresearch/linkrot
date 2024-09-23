@@ -1,4 +1,5 @@
 ![linkrot logo](https://github.com/marshalmiller/linkrot/blob/6e6fb45239f8d06e89671e2ec68a11629747355d/branding/Asset%207@4x.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frottingresearch%2Flinkrot.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Frottingresearch%2Flinkrot?ref=badge_shield)
 # Introduction
 
 Scans PDFs for links written in plaintext and checks if they are active or returns an error code. It then generates a report of its findings. Extract references (PDF, URL, DOI, arXiv) and metadata from a PDF.
@@ -294,3 +295,6 @@ To view our code of conduct please visit our [Code of Conduct page](https://gith
             
 # License
 This program is licensed with an [GPLv3 License](https://github.com/marshalmiller/linkrot/blob/main/LICENSE).
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frottingresearch%2Flinkrot.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Frottingresearch%2Flinkrot?ref=badge_large)
