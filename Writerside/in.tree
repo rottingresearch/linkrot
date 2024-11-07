@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="in"
+                 name="Instance Name" start-page="CONTRIBUTING.md">
+
+    <toc-element topic="SECURITY.md"/>
+    <toc-element topic="CONTRIBUTING.md"/>
+    <toc-element topic="README.md"/>
+    <toc-element topic="code_of_conduct.md"/>
+    <toc-element toc-title=".github">
+        <toc-element toc-title="ISSUE_TEMPLATE">
+            <toc-element topic="update.md"/>
+            <toc-element topic="bug_report.md"/>
+            <toc-element topic="feature_request.md"/>
+        </toc-element>
+    </toc-element>
+    <toc-element toc-title="venv">
+        <toc-element toc-title="lib">
+            <toc-element toc-title="python3.12">
+                <toc-element toc-title="site-packages">
+                    <toc-element toc-title="flask">
+                        <toc-element toc-title="sansio">
+                            <toc-element topic="sansio_README.md"/>
+                        </toc-element>
+                    </toc-element>
+                    <toc-element toc-title="idna-3.10.dist-info">
+                        <toc-element topic="LICENSE.md"/>
+                    </toc-element>
+                    <toc-element toc-title="PyMuPDFb-1.23.7.dist-info">
+                        <toc-element topic="PyMuPDFb-1.23.7.dist-info_README.md"/>
+                    </toc-element>
+                    <toc-element toc-title="werkzeug">
+                        <toc-element toc-title="debug">
+                            <toc-element toc-title="shared">
+                                <toc-element topic="ICON_LICENSE.md"/>
+                            </toc-element>
+                        </toc-element>
+                    </toc-element>
+                    <toc-element toc-title="PyMuPDF-1.23.8.dist-info">
+                        <toc-element topic="PyMuPDF-1.23.8.dist-info_README.md"/>
+                    </toc-element>
+                </toc-element>
+            </toc-element>
+        </toc-element>
+    </toc-element>
+</instance-profile>

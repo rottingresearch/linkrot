@@ -107,3 +107,4 @@ ENV/
 *.vsidx
 .vs/
 Folder.DotSettings.user
+/Writerside
