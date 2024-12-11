@@ -44,12 +44,12 @@ dev = [
     "mccabe<=0.7.0",
     "mypy==1.13.0",
     "pylint==3.3.2",
-    "pytest==8.3.3",
+    "pytest==8.3.4",
     "build==1.2.2.post1",
     "mega.py==1.0.8",
 ]
 test = [
-    "pytest==8.3.3",
+    "pytest==8.3.4",
     "mega.py==1.0.8",
 ]
 
