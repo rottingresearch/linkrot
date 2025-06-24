@@ -141,15 +141,15 @@ class ReaderBackend:
     def get_references(self, reftype=None, sort=False):
         refs = self.references
         if reftype:
-            refs = {ref for ref in refs if ref.reftype == "pdf"}
-        return sorted(refs) if sort else refs
+            refs = {ref for ref in refs if ref.reftype == reftype}
+        return sorted(refs, key=lambda x: x.ref) if sort else refs
 
     def get_references_as_dict(self, reftype=None, sort=False):
         ret = {}
         refs = self.references
         if reftype:
-            refs = {ref for ref in refs if ref.reftype == "pdf"}
-        for r in sorted(refs) if sort else refs:
+            refs = {ref for ref in refs if ref.reftype == reftype}
+        for r in sorted(refs, key=lambda x: x.ref) if sort else refs:
             if r.reftype in ret:
                 ret[r.reftype].append(r.ref)
             else:

@@ -25,7 +25,9 @@ else:
 
 def sanitize_url(url):
     """ Make sure this url works with urllib2 (ascii, http, etc) """
-    if url and not re.match('^http', url, re.IGNORECASE):
+    if not url:
+        return ""
+    if not re.match('^http', url, re.IGNORECASE):
         # if url and not url.startswith("http"):
         url = "http://%s" % url
     url = url.encode("ascii", "ignore").decode("utf-8")
@@ -104,6 +106,9 @@ def download_urls(
     assert type(urls) in [list, tuple, set], "Urls must be some kind of list"
     assert len(urls), "Need urls"
     assert output_directory, "Need an output_directory"
+
+    # Remove duplicates
+    urls = list(set(urls))
 
     def vprint(s):
         if verbose:

@@ -3,8 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 .idea/
+
 # C extensions
 *.so
+
+# linkrot-specific temporary files
+*.linkrot_cache
+*.url_cache
+linkrot_results_*
 
 # Distribution / packaging
 .Python
@@ -101,10 +107,56 @@ ENV/
 # mypy
 .mypy_cache/
 
+# Academic/Research workflow files
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+references_temp.*
+bibliography_temp.*
+
 # IDE settings
 .vscode/
 .DS_Store
 *.vsidx
 .vs/
 Folder.DotSettings.user
-/Writerside
+
+# Project-specific ignores
+# Backup files from development
+*_backup.py
+*_original.py
+*_old.py
+*.bak
+
+# Temporary test files
+test_temp_*
+temp_*
+scratch_*
+
+# Development output files
+*.log
+*.out
+*.err
+
+# PDF test files (keep only the ones in tests/pdfs/)
+/*.pdf
+temp*.pdf
+test*.pdf
+
+# Configuration files that might contain sensitive data
+config.local.*
+.secrets
+.env.local
+
+# Output directories
+out/
+output/
+results/
+
+# Documentation build artifacts (keep main docs)
+/docs/_build/
+/docs/build/
