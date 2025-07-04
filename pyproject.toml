@@ -40,7 +40,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "black==25.1.0",
-    "coverage==7.9.1",
+    "coverage==7.9.2",
     "flake8==7.3.0",
     "mccabe<=0.7.0",
     "mypy==1.16.1",
