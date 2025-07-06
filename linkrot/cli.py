@@ -13,6 +13,8 @@ from urllib.parse import urlparse
 import linkrot
 from linkrot.downloader import check_refs
 from linkrot.archive import archive_links
+from linkrot.retraction import check_dois_for_retractions
+from linkrot.extractor import extract_doi
 
 
 # print(sys.version)
@@ -68,6 +70,11 @@ def create_parser():
     parser.add_argument(
         "-c", "--check-links", action="store_true",
         help="Check for broken links"
+    )
+
+    parser.add_argument(
+        "-r", "--check-retractions", action="store_true",
+        help="Check DOIs for retracted papers"
     )
 
     parser.add_argument(
@@ -143,6 +150,18 @@ def get_text_output(pdf, args):
                     doi_ref.append(u)
             ret += "- {}: {}\n".format('DOI', len(doi_ref))
 
+    # Retraction check summary (if available)
+    if hasattr(pdf, 'summary') and 'retraction_check' in pdf.summary:
+        retraction_info = pdf.summary['retraction_check']['summary']
+        ret += "\nRetraction Check:\n"
+        ret += "- Total DOIs checked: {}\n".format(
+            retraction_info['total_checked'])
+        ret += "- Clean papers: {}\n".format(retraction_info['clean_count'])
+        ret += "- Retracted papers: {}\n".format(
+            retraction_info['retracted_count'])
+        if retraction_info['retracted_count'] > 0:
+            ret += "- ⚠️  WARNING: Retracted papers found!\n"
+
     if args.verbose == 0:
         if "pdf" in refs:
             ret += "\nPDF References:\n"
@@ -201,7 +220,7 @@ def main():
         text = pdf.get_text()
         if args.output_file:
             # to file (in utf-8)
-            with open(args.output_file, "w", "utf-8") as f:
+            with open(args.output_file, "w", encoding="utf-8") as f:
                 f.write(text)
         else:
             # to console
@@ -214,7 +233,7 @@ def main():
         text = json.dumps(pdf.summary, indent=4)
         if args.output_file:
             # to file (in utf-8)
-            with open(args.output_file, "w", "utf-8") as f:
+            with open(args.output_file, "w", encoding="utf-8") as f:
                 f.write(text)
         else:
             # to console
@@ -224,7 +243,7 @@ def main():
         text = get_text_output(pdf, args)
         if args.output_file:
             # to file (in utf-8)
-            with open(args.output_file, "w", "utf-8") as f:
+            with open(args.output_file, "w", encoding="utf-8") as f:
                 f.write(text)
         else:
             # to console
@@ -243,6 +262,20 @@ def main():
         refs = [ref for ref in refs_all if ref.reftype in ["url"]]
         print("\nArchieve %s URLs..." % len(refs))
         archive_links(refs)
+
+    # Check for retracted papers
+    if args.check_retractions:
+        text = pdf.get_text()
+        dois = extract_doi(text)
+        if dois:
+            print(f"\nFound {len(dois)} DOI(s) to check for retractions...")
+            retraction_results = check_dois_for_retractions(dois, verbose=True)
+            
+            # Add retraction info to summary if JSON output
+            if args.json:
+                pdf.summary["retraction_check"] = retraction_results
+        else:
+            print("\nNo DOIs found in the document to check for retractions.")
 
     # Check for errors in downloading and then produce the output
     try:

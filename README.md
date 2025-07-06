@@ -4,12 +4,15 @@
 
 Scans PDFs for links written in plaintext and checks if they are active or returns an error code. It then generates a report of its findings. Extract references (PDF, URL, DOI, arXiv) and metadata from a PDF.
 
+**New in v5.2.2**: Retraction checking! linkrot now automatically checks DOIs against retraction databases to identify potentially retracted papers, helping ensure research integrity.
+
 Check out our sister project, [Rotting Research](https://github.com/marshalmiller/rottingresearch), for a web app implementation of this project.
 
 # Features
 
 - Extract references and metadata from a given PDF.  
 - Detects PDF, URL, arXiv and DOI references.
+- **Check DOIs for retracted papers** (using the -r flag).
 - Archives valid links using Internet Archive's Wayback Machine (using the -a flag).
 - Checks for valid SSL certificate.  
 - Find broken hyperlinks (using the -c flag).  
@@ -45,7 +48,7 @@ linkrot -h
 
 usage: 
 ```bash 
-linkrot [-h] [-d OUTPUT_DIRECTORY] [-c] [-j] [-v] [-t] [-o OUTPUT_FILE] [--version] pdf
+linkrot [-h] [-d OUTPUT_DIRECTORY] [-c] [-r] [-j] [-v] [-t] [-o OUTPUT_FILE] [--version] pdf
 ```
 
 Extract metadata and references from a PDF, and optionally download all
@@ -60,6 +63,7 @@ referenced PDFs.
     -h, --help            (Show this help message and exit)  
     -d OUTPUT_DIRECTORY,  --download-pdfs OUTPUT_DIRECTORY (Download all referenced PDFs into specified directory)  
     -c, --check-links     (Check for broken links)  
+    -r, --check-retractions (Check DOIs for retracted papers)
     -j, --json            (Output infos as JSON (instead of plain text))  
     -v, --verbose         (Print all references (instead of only PDFs))  
     -t, --text            (Only extract text (no metadata or references))  
@@ -86,6 +90,21 @@ linkrot https://example.com/example.pdf -t -o pdf-text.txt
 #### Check Links
 ```bash
 linkrot https://example.com/example.pdf -c
+```
+
+#### Check for Retracted Papers
+```bash
+linkrot https://example.com/example.pdf -r
+```
+
+#### Check Both Links and Retractions
+```bash
+linkrot https://example.com/example.pdf -c -r
+```
+
+#### Get Results as JSON with Retraction Check
+```bash
+linkrot https://example.com/example.pdf -r -j
 ```
 
 ## 2. Main Python Library
@@ -289,6 +308,54 @@ doi = extract_doi(text)
 Return type: Set `<class 'set'>` of DOIs
 
 Information Provided: All DOIs in the text
+
+## 5. Linkrot retraction functions
+
+Import:
+```python
+from linkrot.retraction import check_dois_for_retractions, RetractionChecker
+```
+
+### check_dois_for_retractions(dois, verbose=False)
+Arguments: 
+
+	dois: Set of DOI strings to check for retractions
+	verbose: Whether to print detailed results
+	
+Usage: 
+```python
+# Get DOIs from PDF text
+text = pdf.get_text()
+dois = extract_doi(text)
+
+# Check for retractions
+result = check_dois_for_retractions(dois, verbose=True)
+```
+
+Return type: Dictionary with retraction results and summary
+
+Information Provided: Checks each DOI against retraction databases and provides detailed information about any retracted papers found.
+
+### RetractionChecker class
+For more advanced usage, you can use the RetractionChecker class directly:
+
+```python
+checker = RetractionChecker()
+
+# Check individual DOI
+result = checker.check_doi("10.1000/182")
+
+# Check multiple DOIs
+results = checker.check_multiple_dois({"10.1000/182", "10.1038/nature12373"})
+
+# Get summary
+summary = checker.get_retraction_summary(results)
+```
+
+The retraction checker uses multiple methods to detect retractions:
+- CrossRef API for retraction notices in metadata
+- Analysis of DOI landing pages for retraction indicators
+- Extensible design for adding more retraction databases
 
 # Code of Conduct
 To view our code of conduct please visit our [Code of Conduct page](https://github.com/marshalmiller/rottingresearch/blob/main/code_of_conduct.md).
