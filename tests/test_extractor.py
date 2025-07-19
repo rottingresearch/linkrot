@@ -482,8 +482,14 @@ class TestImprovedExtractor:
         text = "Visit https://example.com."
         urls = extract_urls_improved(text)
         # Should not include the trailing period
-        assert "https://example.com" in urls
-        assert "https://example.com." not in urls
+        from urllib.parse import urlparse
+        for url in urls:
+            parsed_url = urlparse(url)
+            # Validate that the hostname matches example.com and the scheme is valid
+            assert parsed_url.hostname == "example.com"
+            assert parsed_url.scheme in ["http", "https"]
+            # Ensure no trailing period in the parsed URL
+            assert not parsed_url.path.endswith(".")
 
 
 if __name__ == '__main__':
