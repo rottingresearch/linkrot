@@ -1,3 +1,5 @@
+permissions:
+  contents: read
 on: [issue_comment, pull_request_review]
 
 jobs:
