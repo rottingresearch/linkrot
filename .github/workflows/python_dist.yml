@@ -1,9 +1,10 @@
+permissions:
+  contents: read
 name: PyPi Dist
 
 on:
   release:
     types: [published]
-
 
 jobs:
   pypi-build-n-publish:
