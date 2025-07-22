@@ -1,0 +1,23 @@
+python3-linkrot (5.2.2-1) unstable; urgency=medium
+
+  * New upstream release 5.2.2
+  * Added retraction checking functionality
+  * Check DOIs against retraction databases to identify potentially retracted papers
+  * Multiple detection methods: CrossRef API and metadata analysis
+  * Rate limiting and caching for respectful API usage
+  * Comprehensive error handling
+  * New CLI option: -r, --check-retractions
+  * JSON output includes retraction check results
+  * Added requests dependency for API communications
+  * Updated pyproject.toml with new dependency
+  * Enhanced DOI extraction and validation
+  * Added comprehensive test suite for retraction functionality
+  * Added example usage demonstrations
+
+ -- Marshal Miller <marshal@rottingresearch.org>  Mon, 22 Jul 2025 10:00:00 +0000
+
+python3-linkrot (5.2.1-1) unstable; urgency=medium
+
+  * Previous release
+
+ -- Marshal Miller <marshal@rottingresearch.org>  Mon, 01 Jan 2025 10:00:00 +0000

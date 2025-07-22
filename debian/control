@@ -1,0 +1,54 @@
+Source: python3-linkrot
+Section: utils
+Priority: optional
+Maintainer: Marshal Miller <marshal@rottingresearch.org>
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3-setuptools,
+               python3-all,
+               python3-build,
+               python3-pip,
+               python3-wheel
+Standards-Version: 4.6.0
+Homepage: https://github.com/rottingresearch/linkrot
+Vcs-Browser: https://github.com/rottingresearch/linkrot
+Vcs-Git: https://github.com/rottingresearch/linkrot.git
+Rules-Requires-Root: no
+
+Package: python3-linkrot
+Architecture: all
+Depends: ${python3:Depends},
+         ${misc:Depends},
+         python3-pymupdf,
+         python3-chardet,
+         python3-lxml,
+         python3-requests
+Description: Extract metadata and URLs from PDF files
+ linkrot scans PDFs for links written in plaintext and checks if they are
+ active or returns an error code. It then generates a report of its findings.
+ Extract references (PDF, URL, DOI, arXiv) and metadata from a PDF.
+ .
+ Features:
+  * Extract references and metadata from a given PDF
+  * Detects PDF, URL, arXiv and DOI references
+  * Check DOIs for retracted papers
+  * Archives valid links using Internet Archive's Wayback Machine
+  * Checks for valid SSL certificate
+  * Find broken hyperlinks
+  * Output as text or JSON
+  * Extract the PDF text
+  * Use as command-line tool or Python package
+  * Works with local and online PDFs
+
+Package: linkrot
+Architecture: all
+Depends: ${misc:Depends},
+         python3-linkrot (= ${binary:Version})
+Description: Extract metadata and URLs from PDF files - command line tool
+ This package provides the linkrot command-line tool.
+ .
+ linkrot scans PDFs for links written in plaintext and checks if they are
+ active or returns an error code. It then generates a report of its findings.
+ Extract references (PDF, URL, DOI, arXiv) and metadata from a PDF.
+ .
+ This is the command-line interface for the python3-linkrot library.

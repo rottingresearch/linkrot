@@ -23,11 +23,30 @@ Check out our sister project, [Rotting Research](https://github.com/marshalmille
 
 # Installation
 
+## PyPI (Recommended)
 Grab a copy of the code with pip:
  
 ```bash
 pip install linkrot
 ```
+
+## Debian/Ubuntu Package
+For Debian/Ubuntu systems, you can build and install a .deb package:
+
+```bash
+# Install build dependencies
+sudo apt-get install dpkg-dev debhelper dh-python python3-setuptools
+
+# Build the package
+python3 setup-deb-build.py
+./build-deb.sh
+
+# Install the packages
+sudo dpkg -i ../python3-linkrot_*.deb ../linkrot_*.deb
+sudo apt-get install -f  # Fix any dependency issues
+```
+
+See `debian/README.md` for detailed packaging instructions.
 
 # Usage
 

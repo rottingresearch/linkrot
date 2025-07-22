@@ -1,0 +1,67 @@
+.TH LINKROT 1 "July 2025" "linkrot 5.2.2" "User Commands"
+.SH NAME
+linkrot \- Extract metadata and URLs from PDF files
+.SH SYNOPSIS
+.B linkrot
+[\fIOPTION\fR]... \fIPDF\fR
+.SH DESCRIPTION
+linkrot scans PDFs for links written in plaintext and checks if they are active or returns an error code. It then generates a report of its findings. Extract references (PDF, URL, DOI, arXiv) and metadata from a PDF.
+.PP
+The program can extract references and metadata from a given PDF, detect PDF, URL, arXiv and DOI references, check DOIs for retracted papers, archive valid links using Internet Archive's Wayback Machine, check for valid SSL certificates, find broken hyperlinks, output as text or JSON, extract the PDF text, and work with both local and online PDFs.
+.SH OPTIONS
+.TP
+.B \-h, \-\-help
+Show help message and exit
+.TP
+.B \-d \fIDIRECTORY\fR, \-\-download\-pdfs \fIDIRECTORY\fR
+Download all referenced PDFs into specified directory
+.TP
+.B \-c, \-\-check\-links
+Check for broken links
+.TP
+.B \-r, \-\-check\-retractions
+Check DOIs for retracted papers
+.TP
+.B \-j, \-\-json
+Output information as JSON instead of plain text
+.TP
+.B \-v, \-\-verbose
+Print all references instead of only PDFs
+.TP
+.B \-t, \-\-text
+Only extract text (no metadata or references)
+.TP
+.B \-a, \-\-archive
+Archive active links using Internet Archive
+.TP
+.B \-o \fIFILE\fR, \-\-output\-file \fIFILE\fR
+Output to specified file instead of console
+.TP
+.B \-\-version
+Show program's version number and exit
+.SH EXAMPLES
+.TP
+Extract metadata and references from a PDF:
+.B linkrot document.pdf
+.TP
+Check for broken links:
+.B linkrot document.pdf \-c
+.TP
+Check for retracted papers:
+.B linkrot document.pdf \-r
+.TP
+Check both links and retractions with JSON output:
+.B linkrot document.pdf \-c \-r \-j
+.TP
+Extract only text to a file:
+.B linkrot document.pdf \-t \-o output.txt
+.SH AUTHOR
+Marshal Miller <marshal@rottingresearch.org>
+.SH COPYRIGHT
+Copyright © 2024, Marshal Miller. License GPLv3+: GNU GPL version 3 or later.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH SEE ALSO
+.BR python3 (1)
+.PP
+Full documentation and source code: https://github.com/rottingresearch/linkrot
