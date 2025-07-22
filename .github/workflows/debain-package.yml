@@ -7,7 +7,7 @@ on:
   push:
     tags:
       - 'v*'
-
+  workflow_dispatch:
 jobs:
   Create_Packages:
     name: Create Package
