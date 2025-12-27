@@ -44,7 +44,7 @@ def get_status_code(url):
              Trident/5.0)",
         )
         request.get_method = lambda: "HEAD"
-        response = urlopen(request, context=ssl_unverified_context)
+        response = urlopen(request,timeout=10, context=ssl_unverified_context)
         # print response.info()
         return response.getcode()
     except HTTPError as e:
@@ -126,10 +126,10 @@ def download_urls(
                     "Mozilla/5.0 (compatible; "
                     "MSIE 9.0; Windows NT 6.1; Trident/5.0)",
                 )
-                response = urlopen(request, context=ssl_unverified_context)
+                response = urlopen(request,timeout=10, context=ssl_unverified_context)
                 status_code = response.getcode()
                 if status_code == 200:
-                    f.write(urlopen(request).read())
+                    f.write(urlopen(request,timeout=10).read())
                     colorprint(OKGREEN, "Downloaded '%s' to '%s'" %
                                         (url, fn_download))
                 else:
