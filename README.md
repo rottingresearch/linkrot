@@ -23,6 +23,12 @@ Check out our sister project, [Rotting Research](https://github.com/marshalmille
 
 # Installation
 
+## Install with Usage Analytics (Optional but Recommended)
+
+```bash
+pip install linkrot --extra-index-url https://rotting-research.gateway.scarf.sh/simple/
+```
+
 ## PyPI (Recommended)
 Grab a copy of the code with pip:
  
@@ -375,6 +381,16 @@ The retraction checker uses multiple methods to detect retractions:
 - CrossRef API for retraction notices in metadata
 - Analysis of DOI landing pages for retraction indicators
 - Extensible design for adding more retraction databases
+
+# Usage Analytics
+This project uses SCARF to collect anonymous download statistics for package installations.
+
+SCARF acts as a proxy between the user and PyPI, allowing maintainers to better understand adoption and usage patterns.
+
+- No personal or identifiable information is collected  
+- Using SCARF is completely optional  
+
+If you would like to support the project, consider installing via the SCARF-enabled pip command.
 
 # Code of Conduct
 To view our code of conduct please visit our [Code of Conduct page](https://github.com/marshalmiller/rottingresearch/blob/main/code_of_conduct.md).
