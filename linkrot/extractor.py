@@ -13,13 +13,8 @@ ARXIV_REGEX2 = r"""arxiv.org/abs/([^\s,]+)"""
 # dx.doi.org/10.1000/182
 # DOI 10.1000/182 (without colon)
 # (DOI: 10.1000/182)
-DOI_REGEX = r"""(?i)(?:(?:https?://)?(?:dx\.)?doi\.org/|doi:?\s*)([0-9]{2}\.[0-9]{4,}/[^\s,;)\]}>]+)"""
-
-# Additional DOI pattern for cases with "DOI" followed by space/colon
-DOI_REGEX2 = r"""(?i)doi:?\s+([0-9]{2}\.[0-9]{4,}/[^\s,;)\]}>]+)"""
-
-# Pattern for DOIs in parentheses or brackets
-DOI_REGEX3 = r"""(?i)[\(\[]doi:?\s*([0-9]{2}\.[0-9]{4,}/[^\s,;)\]}>]+)[\)\]]"""
+#(10.3000/test) Bare DOI
+#(DOI : 10.1002/xyz) additional space before colon
 
 # Common top-level domains (focused on most used TLDs for better performance)
 COMMON_TLDS = r"""(?:com|net|org|edu|gov|mil|int|aero|asia|biz|cat|coop|info|jobs|mobi|museum|name|post|pro|tel|travel|xxx|io|ai|co|uk|de|jp|fr|au|ca|br|ru|cn|in|mx|it|es|nl|be|ch|se|no|dk|fi|pl|cz|at|hu|gr|pt|ie|ro|bg|hr|si|sk|lt|lv|ee|lu|mt|cy|is|li|ad|mc|sm|va|md|me|rs|mk|ba|al|by|ua|kz|kg|tj|tm|uz|am|az|ge|tr|il|lb|sy|jo|sa|ae|kw|qa|bh|om|ye|iq|ir|af|pk|bd|lk|mv|np|bt|mm|th|la|kh|vn|my|sg|bn|id|ph|tw|kr|kp|mn|hk|mo|fm|pw|mh|mp|gu|as|vi|pr|tc|vg|ag|dm|gd|kn|lc|vc|bb|tt|jm|ht|do|cu|bs|bz|gt|sv|hn|ni|cr|pa|ve|gy|sr|ec|pe|bo|py|uy|ar|cl|fk|gs)"""
@@ -137,7 +132,8 @@ def extract_doi(text):
     - dx.doi.org/10.1000/182
     - DOI 10.1000/182 (without colon)
     - (DOI: 10.1000/182) in parentheses
-    
+    - (10.3000/test) Bare DOI
+    - (DOI : 10.1002/xyz) additional space before colon
     Returns:
         Set of unique DOI identifiers (without prefixes)
     """
@@ -148,16 +144,14 @@ def extract_doi(text):
     cleaned_text = clean_url_text(text)
     
     # Find DOIs using all patterns
-    dois = []
-    dois.extend(re.findall(DOI_REGEX, cleaned_text, re.MULTILINE | re.IGNORECASE))
-    dois.extend(re.findall(DOI_REGEX2, cleaned_text, re.MULTILINE | re.IGNORECASE))
-    dois.extend(re.findall(DOI_REGEX3, cleaned_text, re.MULTILINE | re.IGNORECASE))
+    pattern = re.compile(r'10\.\d{4,9}/[^\s"<>]+', re.IGNORECASE)
+    matches = pattern.findall(cleaned_text)
     
     # Clean and validate DOIs
     cleaned_dois = set()
-    for doi in dois:
+    for doi in matches:
         # Remove trailing punctuation
-        doi = doi.strip('.,;:!?')
+        doi = doi.strip('.,;:!?()[]')
         
         # Validate DOI format (should be like 10.xxxx/something)
         if doi and re.match(r'^10\.\d{4,}/\S+', doi):
