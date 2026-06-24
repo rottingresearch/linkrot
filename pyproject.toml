@@ -32,7 +32,7 @@ classifiers = [
     "Topic :: Utilities",
 ]
 dependencies = [
-    "PyMuPDF==1.26.7",
+    "PyMuPDF==1.27.2.3",
     "chardet==5.2.0",
     "lxml==6.1.1",
     "requests>=2.25.0",
