@@ -33,7 +33,7 @@ classifiers = [
 ]
 dependencies = [
     "PyMuPDF==1.26.7",
-    "chardet==5.2.0",
+    "chardet==7.4.3",
     "lxml==6.1.1",
     "requests>=2.25.0",
 ]
