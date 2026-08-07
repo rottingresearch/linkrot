@@ -32,7 +32,7 @@ classifiers = [
     "Topic :: Utilities",
 ]
 dependencies = [
-    "PyMuPDF==1.26.7",
+    "PyMuPDF==1.28.0",
     "chardet==7.4.3",
     "lxml==6.1.1",
     "requests>=2.25.0",
@@ -41,7 +41,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "black==26.3.1",
-    "coverage==7.14.3",
+    "coverage==7.15.2",
     "flake8==7.3.0",
     "mccabe<=0.7.0",
     "mypy==2.3.0",
